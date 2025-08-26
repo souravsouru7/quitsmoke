@@ -61,23 +61,23 @@ const Hero = () => {
             </h1>
             
             <p className="hero-description">
-              QuitEasy combines cutting-edge behavioral science with personalized support to help you break free from smoking addiction permanently.
+              Quitting smoking is one of the best things you can do for your health. Your body will start healing the day you quit smoking. It is never too late to quit smoking.
             </p>
             
             <div className="stats-section">
               <div className="stat-item">
-                <div className="stat-number">94.2%</div>
-                <div className="stat-label">Success Rate</div>
+                <div className="stat-number">2 days</div>
+                <div className="stat-label">CO Leaves Blood</div>
               </div>
               <div className="stat-divider"></div>
               <div className="stat-item">
-                <div className="stat-number">12,847</div>
-                <div className="stat-label">Lives Transformed</div>
+                <div className="stat-number">12 weeks</div>
+                <div className="stat-label">Better Blood Flow</div>
               </div>
               <div className="stat-divider"></div>
               <div className="stat-item">
-                <div className="stat-number">24/7</div>
-                <div className="stat-label">Expert Support</div>
+                <div className="stat-number">9 months</div>
+                <div className="stat-label">Lungs Working Better</div>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@ const Hero = () => {
           <div className="cta-section">
             <button className="cta-primary">
               <span className="btn-content">
-                <span className="btn-text">Begin Your Journey</span>
+                <span className="btn-text">Learn More</span>
                 <span className="btn-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -96,7 +96,7 @@ const Hero = () => {
             </button>
             
             <button className="cta-secondary">
-              <span className="btn-text">Learn Our Method</span>
+              <span className="btn-text">Understand the Science</span>
               <div className="btn-accent"></div>
             </button>
           </div>
