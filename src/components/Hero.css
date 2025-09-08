@@ -3,6 +3,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
 
+/* Brand palette derived from logo (violet + dark green) */
+:root {
+  --brand-purple: #4a1f7a; /* violet */
+  --brand-green: #2f6b3c;  /* dark green */
+  --brand-purple-10: rgba(74, 31, 122, 0.10);
+  --brand-purple-20: rgba(74, 31, 122, 0.20);
+  --brand-green-10: rgba(47, 107, 60, 0.10);
+}
+
 /* Premium Hero Component Styles */
 .hero {
   position: relative;
@@ -28,7 +37,14 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 20%, #10b981 48%, #059669 70%, #3b82f6 100%);
+  /* Gradient tuned to match logo's violet + dark green */
+  background: linear-gradient(
+    135deg,
+    rgba(47, 107, 60, 0.12) 0%,
+    rgba(47, 107, 60, 0.18) 25%,
+    rgba(74, 31, 122, 0.28) 60%,
+    rgba(74, 31, 122, 0.42) 100%
+  );
   opacity: 0.95;
 }
 
@@ -39,8 +55,8 @@
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-    radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    radial-gradient(circle at 20% 20%, var(--brand-purple-10) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, var(--brand-green-10) 1px, transparent 1px);
   background-size: 60px 60px;
   animation: pattern-move 30s linear infinite;
 }
@@ -59,7 +75,7 @@
   background: linear-gradient(45deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 100%);
 }
 
-/* Subtle Floating Elements */
+
 .floating-elements {
   position: absolute;
   width: 100%;
@@ -70,7 +86,7 @@
 .floating-element {
   position: absolute;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+  background: linear-gradient(135deg, var(--brand-purple-10) 0%, var(--brand-green-10) 100%);
   backdrop-filter: blur(10px);
   animation: float-subtle 20s ease-in-out infinite;
 }
@@ -126,7 +142,7 @@
 .badge {
   display: inline-flex;
   align-items: center;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, var(--brand-purple) 0%, var(--brand-green) 100%);
   color: white;
   padding: 0.75rem 1.5rem;
   border-radius: 8px;
@@ -135,7 +151,7 @@
   margin-bottom: 2.5rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 4px 20px var(--brand-purple-20);
   letter-spacing: 0.025em;
   font-family: 'DM Sans', sans-serif;
   text-transform: uppercase;
@@ -161,6 +177,55 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #1e293b; /* ensure strong contrast */
+}
+
+/* Logo in Hero */
+.hero-logo {
+  height: 72px;
+  width: auto;
+  display: block;
+  margin-bottom: 1rem;
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Ensure header content (including logo) is above backgrounds */
+.hero-header {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.title-wrapper {
+  flex: 1 1 auto;
+}
+
+/* Title prefix chip for visibility */
+.title-prefix {
+  display: inline-block;
+  background: rgba(255,255,255,0.85);
+  color: var(--brand-purple);
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 0.75rem;
+}
+
+.title-accent {
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .title-line {
@@ -178,7 +243,7 @@
 }
 
 .text-accent {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, var(--brand-green) 0%, var(--brand-purple) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -242,7 +307,7 @@
 }
 
 .cta-primary {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, var(--brand-purple) 0%, var(--brand-green) 100%);
   color: white;
   border: none;
   padding: 1.25rem 2.5rem;
@@ -251,7 +316,7 @@
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.25);
+  box-shadow: 0 8px 25px var(--brand-purple-20);
   letter-spacing: 0.025em;
   font-family: 'DM Sans', sans-serif;
   text-transform: uppercase;
@@ -259,7 +324,7 @@
 
 .cta-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 12px 35px var(--brand-purple-20);
 }
 
 .btn-content {
@@ -296,10 +361,10 @@
 }
 
 .cta-secondary:hover {
-  border-color: #10b981;
-  color: #10b981;
+  border-color: var(--brand-purple);
+  color: var(--brand-purple);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 8px 25px var(--brand-purple-20);
 }
 
 .btn-accent {
@@ -308,7 +373,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #10b981;
+  background: var(--brand-purple);
   transition: width 0.3s ease;
 }
 
@@ -399,7 +464,7 @@
 }
 
 .stat-icon {
-  color: #10b981;
+  color: var(--brand-purple);
   flex-shrink: 0;
 }
 
@@ -447,7 +512,7 @@
   left: 0;
   width: 100%;
   height: 30px;
-  background: linear-gradient(to bottom, #10b981, #059669);
+  background: linear-gradient(to bottom, var(--brand-purple), var(--brand-green));
   animation: scroll-animate 2s ease-in-out infinite;
 }
 
@@ -531,6 +596,7 @@
   .stat-card {
     display: none;
   }
+
 }
 
 @media (max-width: 480px) {
@@ -553,6 +619,7 @@
   .hero-image {
     max-width: 250px;
   }
+
 }
 
 /* Mobile responsiveness enhancements */
@@ -613,6 +680,7 @@
   .hero-image {
     max-width: 270px;
   }
+
 }
 
 @media (max-width: 380px) {
@@ -631,4 +699,9 @@
   .hero-image {
     max-width: 220px;
   }
+
 }
+
+
+
+
