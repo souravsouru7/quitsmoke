@@ -50,73 +50,73 @@ const Hero = () => {
           />
         </div>
 
-        {/* Main content - mobile responsive */}
-        <div className="relative z-10 flex min-h-screen items-center justify-center px-4 sm:px-6 md:px-8">
-          <div className="text-center max-w-7xl w-full">
+        {/* Main content - classic mobile design */}
+        <div className="relative z-10 flex min-h-screen items-center justify-center px-6 sm:px-8 md:px-12">
+          <div className="text-center max-w-6xl w-full">
             
-            {/* Main heading - mobile responsive */}
-            <div className="mb-12 sm:mb-16 md:mb-20">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight mb-4 sm:mb-6 md:mb-8">
-                <div className="typewriter-dynamic text-purple-900 mb-2 sm:mb-4">BELIEVE</div>
+            {/* Main heading - classic mobile design */}
+            <div className="mb-16 sm:mb-20 md:mb-24">
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-tight mb-6 sm:mb-8 md:mb-10">
+                <div className="typewriter-dynamic text-purple-900 mb-3 sm:mb-4">BELIEVE</div>
                 <div className="typewriter-dynamic-delay text-purple-600">in people</div>
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-purple-700 font-light max-w-5xl mx-auto leading-relaxed typewriter-dynamic-slow px-4">
+              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-purple-700 font-light max-w-4xl mx-auto leading-relaxed typewriter-dynamic-slow">
                 Transform your life with our revolutionary approach to wellness and personal growth
               </p>
             </div>
 
-            {/* Call to action section - mobile responsive */}
-            <div className="mb-12 sm:mb-16 md:mb-20">
-              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center items-center px-4">
+            {/* Call to action section - classic mobile design */}
+            <div className="mb-16 sm:mb-20 md:mb-24">
+              <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 md:gap-10 justify-center items-center">
                 <button 
                   onClick={() => setShowForm(true)}
-                  className="w-full sm:w-auto px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 bg-purple-600 text-white font-bold text-lg sm:text-xl rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  className="w-full sm:w-auto px-12 sm:px-16 md:px-20 py-5 sm:py-6 md:py-7 bg-purple-600 text-white font-bold text-xl sm:text-2xl md:text-3xl rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
                 >
                   Start Your Journey
                 </button>
                 
-                <button className="w-full sm:w-auto px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 border-2 border-purple-600 text-purple-600 font-bold text-lg sm:text-xl rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-lg">
+                <button className="w-full sm:w-auto px-12 sm:px-16 md:px-20 py-5 sm:py-6 md:py-7 border-3 border-purple-600 text-purple-600 font-bold text-xl sm:text-2xl md:text-3xl rounded-2xl hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-xl hover:shadow-2xl">
                   Learn More
                 </button>
               </div>
             </div>
 
-            {/* Feature cards - mobile responsive */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto px-4">
-              <div className="group bg-purple-50 rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-300 transform hover:-translate-y-2">
-                <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">🚀</div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-purple-900 mb-3 sm:mb-4 typewriter-dynamic-delay">Fast Results</h3>
-                <p className="text-purple-700 text-sm sm:text-base typewriter-dynamic-slow">See meaningful changes in just 7 days with our proven methodology</p>
+            {/* Feature cards - classic mobile design */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 max-w-5xl mx-auto">
+              <div className="group bg-white/90 backdrop-blur-sm rounded-3xl p-8 sm:p-10 md:p-12 border-2 border-purple-200 hover:bg-white hover:border-purple-400 transition-all duration-500 transform hover:-translate-y-3 shadow-xl hover:shadow-2xl">
+                <div className="text-6xl sm:text-7xl mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-300">🚀</div>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 mb-4 sm:mb-6 typewriter-dynamic-delay">Fast Results</h3>
+                <p className="text-purple-700 text-base sm:text-lg md:text-xl typewriter-dynamic-slow leading-relaxed">See meaningful changes in just 7 days with our proven methodology</p>
               </div>
               
-              <div className="group bg-purple-50 rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-300 transform hover:-translate-y-2">
-                <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">💪</div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-purple-900 mb-3 sm:mb-4 typewriter-dynamic-delay">Proven Method</h3>
-                <p className="text-purple-700 text-sm sm:text-base typewriter-dynamic-slow">Scientifically backed approach trusted by thousands worldwide</p>
+              <div className="group bg-white/90 backdrop-blur-sm rounded-3xl p-8 sm:p-10 md:p-12 border-2 border-purple-200 hover:bg-white hover:border-purple-400 transition-all duration-500 transform hover:-translate-y-3 shadow-xl hover:shadow-2xl">
+                <div className="text-6xl sm:text-7xl mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-300">💪</div>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 mb-4 sm:mb-6 typewriter-dynamic-delay">Proven Method</h3>
+                <p className="text-purple-700 text-base sm:text-lg md:text-xl typewriter-dynamic-slow leading-relaxed">Scientifically backed approach trusted by thousands worldwide</p>
               </div>
               
-              <div className="group bg-purple-50 rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-300 transform hover:-translate-y-2 sm:col-span-2 lg:col-span-1">
-                <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">🤝</div>
-                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-purple-900 mb-3 sm:mb-4 typewriter-dynamic-delay">24/7 Support</h3>
-                <p className="text-purple-700 text-sm sm:text-base typewriter-dynamic-slow">Always here when you need us with round-the-clock assistance</p>
+              <div className="group bg-white/90 backdrop-blur-sm rounded-3xl p-8 sm:p-10 md:p-12 border-2 border-purple-200 hover:bg-white hover:border-purple-400 transition-all duration-500 transform hover:-translate-y-3 shadow-xl hover:shadow-2xl sm:col-span-2 lg:col-span-1">
+                <div className="text-6xl sm:text-7xl mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-300">🤝</div>
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 mb-4 sm:mb-6 typewriter-dynamic-delay">24/7 Support</h3>
+                <p className="text-purple-700 text-base sm:text-lg md:text-xl typewriter-dynamic-slow leading-relaxed">Always here when you need us with round-the-clock assistance</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Floating elements - mobile responsive */}
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-40">
-          <button className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-purple-600 rounded-full flex items-center justify-center shadow-xl hover:bg-purple-700 transition-all duration-300 border-2 border-purple-400 hover:scale-110">
-            <span className="text-2xl sm:text-3xl">💬</span>
+        {/* Floating elements - classic mobile design */}
+        <div className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 md:bottom-10 md:right-10 z-40">
+          <button className="w-20 h-20 sm:w-22 sm:h-22 md:w-24 md:h-24 bg-purple-600 rounded-full flex items-center justify-center shadow-2xl hover:bg-purple-700 transition-all duration-300 border-3 border-purple-400 hover:scale-110">
+            <span className="text-3xl sm:text-4xl">💬</span>
           </button>
         </div>
 
-        {/* Scroll indicator - mobile responsive */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 sm:bottom-6 md:bottom-8 z-30">
+        {/* Scroll indicator - classic mobile design */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 sm:bottom-8 md:bottom-10 z-30">
           <div className="flex flex-col items-center text-purple-600">
-            <span className="text-sm sm:text-base mb-2 sm:mb-3 font-semibold">Scroll</span>
-            <div className="w-6 h-10 sm:w-8 sm:h-12 border-2 border-purple-300 rounded-full flex justify-center">
-              <div className="w-1 h-3 sm:w-2 sm:h-4 bg-purple-500 rounded-full mt-2 animate-bounce"></div>
+            <span className="text-base sm:text-lg mb-3 sm:mb-4 font-bold">Scroll Down</span>
+            <div className="w-8 h-12 sm:w-10 sm:h-16 border-3 border-purple-300 rounded-full flex justify-center">
+              <div className="w-2 h-4 sm:w-3 sm:h-6 bg-purple-500 rounded-full mt-2 animate-bounce"></div>
             </div>
           </div>
         </div>
