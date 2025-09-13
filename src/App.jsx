@@ -27,9 +27,7 @@ function App() {
         <Route path="/" element={
           <>
             <Hero />
-            <SmokeEffects />
-            <HowItWorks />
-            <WhyQuitEasy />
+           
           </>
         } />
         
@@ -42,7 +40,7 @@ function App() {
           )
         } />
         
-        {/* Redirect any unknown routes to home */}
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>

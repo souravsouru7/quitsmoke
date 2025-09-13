@@ -17,132 +17,113 @@ const Hero = () => {
   return (
     <>
       <section
-        className={`relative min-h-screen overflow-hidden bg-gradient-to-br from-[#2f6b3c]/20 via-white to-[#4a1f7a]/40 ${
+        className={`relative min-h-screen overflow-hidden ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
-        } transition-all duration-500 pt-20 md:pt-0`}
+        } transition-all duration-700`}
+        style={{
+          backgroundImage: "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
       >
-        {/* Top-left prominent logo */}
-        <div className="absolute left-4 top-4 z-20 md:left-8 md:top-6">
+        {/* Background overlay for better text readability */}
+        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        {/* Simple geometric background patterns */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute top-20 left-20 w-32 h-32 bg-purple-100 rotate-45 rounded-lg"></div>
+            <div className="absolute top-40 right-32 w-24 h-24 bg-purple-200 rotate-12 rounded-full"></div>
+            <div className="absolute bottom-32 left-1/4 w-40 h-40 bg-purple-50 -rotate-12 rounded-lg"></div>
+            <div className="absolute bottom-20 right-20 w-28 h-28 bg-purple-300 rotate-45 rounded-full"></div>
+          </div>
+        </div>
+
+        {/* Logo - mobile responsive - slightly larger */}
+        <div className="absolute left-4 top-4 sm:left-6 sm:top-6 md:left-8 md:top-8 z-30">
           <img
             src="/logo.png"
             alt="Quit Easy logo"
-            className="h-16 w-auto sm:h-24 md:h-36 lg:h-40 drop-shadow"
+            className="h-20 w-auto sm:h-24 md:h-28 lg:h-36 xl:h-44 drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
             loading="eager"
             decoding="async"
           />
         </div>
-        {/* Gradient glow + grid background */}
-        <div className="pointer-events-none absolute inset-0">
-          {/* soft radial glows */}
-          <div className="absolute left-[-10%] top-[-10%] h-[360px] w-[360px] rounded-full bg-gradient-to-br from-[#4a1f7a]/30 via-[#2f6b3c]/20 to-transparent blur-[80px]" />
-          <div className="absolute right-[-10%] bottom-[-10%] h-[420px] w-[420px] rounded-full bg-gradient-to-tr from-[#2f6b3c]/25 via-[#4a1f7a]/15 to-transparent blur-[90px]" />
 
-          {/* subtle grid */}
-          <svg className="absolute inset-0 -z-10 opacity-[0.12]" aria-hidden="true">
-            <defs>
-              <pattern id="qs-grid" width="32" height="32" patternUnits="userSpaceOnUse">
-                <path d="M32 0H0V32" fill="none" stroke="currentColor" className="text-[#4a1f7a]" strokeWidth="0.6" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#qs-grid)" />
-          </svg>
-
-          {/* floating orbs */}
-          <div className="absolute -left-10 top-16 h-24 w-24 motion-safe:animate-[float_8s_ease-in-out_infinite] rounded-full bg-[#2f6b3c]/15 blur-xl" />
-          <div className="absolute right-10 top-24 h-28 w-28 motion-safe:animate-[float_10s_ease-in-out_infinite] rounded-full bg-[#4a1f7a]/20 blur-xl" />
-        </div>
-
-        {/* Main container */}
-        <div className="relative z-10 mx-auto grid min-h-screen max-w-6xl grid-cols-1 gap-8 px-5 py-14 sm:gap-10 md:grid-cols-2 md:gap-16 md:px-10">
-          {/* Left: content */}
-          <div className="flex flex-col justify-center">
-            {/* Header */}
-            <div className="flex flex-col">
-              <h1 className="mb-4 font-['Space_Grotesk'] text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl md:text-6xl">
-                Your Journey to a
-                <span className="bg-gradient-to-r from-[#2f6b3c] via-[#3d4b8b] to-[#4a1f7a] bg-clip-text text-transparent"> Smoke-Free Life</span>
+        {/* Main content - mobile responsive */}
+        <div className="relative z-10 flex min-h-screen items-center justify-center px-4 sm:px-6 md:px-8">
+          <div className="text-center max-w-7xl w-full">
+            
+            {/* Main heading - mobile responsive */}
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black leading-tight mb-4 sm:mb-6 md:mb-8">
+                <div className="typewriter-dynamic text-purple-900 mb-2 sm:mb-4">BELIEVE</div>
+                <div className="typewriter-dynamic-delay text-purple-600">in people</div>
               </h1>
-              <p className="mb-10 max-w-xl font-['Space_Grotesk'] text-base leading-7 text-slate-600 sm:text-lg md:text-xl">
-                Join thousands who have successfully quit smoking with our evidence-based approach.
-                Start your transformation today and reclaim your health.
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-purple-700 font-light max-w-5xl mx-auto leading-relaxed typewriter-dynamic-slow px-4">
+                Transform your life with our revolutionary approach to wellness and personal growth
               </p>
             </div>
 
-            {/* Benefits */}
-            <div className="mb-10 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
-              <div className="flex items-start gap-3 rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-slate-200 backdrop-blur transition hover:shadow-md">
-                <div className="text-2xl">🫁</div>
-                <div>
-                  <h3 className="font-semibold text-slate-800">Better Breathing</h3>
-                  <p className="text-sm text-slate-600">Improve lung function in just 2 weeks</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-slate-200 backdrop-blur transition hover:shadow-md">
-                <div className="text-2xl">💰</div>
-                <div>
-                  <h3 className="font-semibold text-slate-800">Save Money</h3>
-                  <p className="text-sm text-slate-600">Keep thousands in your pocket yearly</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 rounded-2xl bg-white/80 p-4 shadow-sm ring-1 ring-slate-200 backdrop-blur transition hover:shadow-md">
-                <div className="text-2xl">❤️</div>
-                <div>
-                  <h3 className="font-semibold text-slate-800">Healthier Heart</h3>
-                  <p className="text-sm text-slate-600">Reduce heart disease risk significantly</p>
-                </div>
-              </div>
-            </div>
-
-            {/* CTAs */}
-            <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-              <button
-                onClick={() => setShowForm(true)}
-                className="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#4a1f7a] via-[#3d4b8b] to-[#2f6b3c] px-7 py-3 font-['Space_Grotesk'] text-sm font-semibold uppercase tracking-wider text-white shadow-lg transition hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#4a1f7a]/30 sm:w-auto"
-              >
-                <span>Start Your Journey</span>
-                <svg
-                  className="transition-transform group-hover:translate-x-1"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
+            {/* Call to action section - mobile responsive */}
+            <div className="mb-12 sm:mb-16 md:mb-20">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center items-center px-4">
+                <button 
+                  onClick={() => setShowForm(true)}
+                  className="w-full sm:w-auto px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 bg-purple-600 text-white font-bold text-lg sm:text-xl rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
-              <a
-                href="#how-it-works"
-                className="relative inline-flex items-center justify-center gap-2 rounded-full border border-transparent bg-white/80 px-6 py-3 font-['Space_Grotesk'] text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 transition hover:text-[#4a1f7a] backdrop-blur w-full sm:w-auto"
-              >
-                <span>Learn How It Works</span>
-                <span className="text-lg">ℹ️</span>
-              </a>
+                  Start Your Journey
+                </button>
+                
+                <button className="w-full sm:w-auto px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 border-2 border-purple-600 text-purple-600 font-bold text-lg sm:text-xl rounded-full hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-lg">
+                  Learn More
+                </button>
+              </div>
+            </div>
+
+            {/* Feature cards - mobile responsive */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto px-4">
+              <div className="group bg-purple-50 rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-300 transform hover:-translate-y-2">
+                <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">🚀</div>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-purple-900 mb-3 sm:mb-4 typewriter-dynamic-delay">Fast Results</h3>
+                <p className="text-purple-700 text-sm sm:text-base typewriter-dynamic-slow">See meaningful changes in just 7 days with our proven methodology</p>
+              </div>
+              
+              <div className="group bg-purple-50 rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-300 transform hover:-translate-y-2">
+                <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">💪</div>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-purple-900 mb-3 sm:mb-4 typewriter-dynamic-delay">Proven Method</h3>
+                <p className="text-purple-700 text-sm sm:text-base typewriter-dynamic-slow">Scientifically backed approach trusted by thousands worldwide</p>
+              </div>
+              
+              <div className="group bg-purple-50 rounded-2xl p-6 sm:p-8 md:p-10 border-2 border-purple-200 hover:bg-purple-100 hover:border-purple-300 transition-all duration-300 transform hover:-translate-y-2 sm:col-span-2 lg:col-span-1">
+                <div className="text-4xl sm:text-5xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">🤝</div>
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-purple-900 mb-3 sm:mb-4 typewriter-dynamic-delay">24/7 Support</h3>
+                <p className="text-purple-700 text-sm sm:text-base typewriter-dynamic-slow">Always here when you need us with round-the-clock assistance</p>
+              </div>
             </div>
           </div>
+        </div>
 
-          {/* Right: visual */}
-          <div className="relative flex min-h-[300px] items-center justify-center">
-            <img
-              src="/human-lungs-with-face-expression.png"
-              alt="Healthy lungs with positive expression"
-              className="mx-auto max-w-[320px] select-none sm:max-w-[420px] md:max-w-[560px]"
-              loading="lazy"
-              decoding="async"
-            />
+        {/* Floating elements - mobile responsive */}
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8 z-40">
+          <button className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-purple-600 rounded-full flex items-center justify-center shadow-xl hover:bg-purple-700 transition-all duration-300 border-2 border-purple-400 hover:scale-110">
+            <span className="text-2xl sm:text-3xl">💬</span>
+          </button>
+        </div>
+
+        {/* Scroll indicator - mobile responsive */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 sm:bottom-6 md:bottom-8 z-30">
+          <div className="flex flex-col items-center text-purple-600">
+            <span className="text-sm sm:text-base mb-2 sm:mb-3 font-semibold">Scroll</span>
+            <div className="w-6 h-10 sm:w-8 sm:h-12 border-2 border-purple-300 rounded-full flex justify-center">
+              <div className="w-1 h-3 sm:w-2 sm:h-4 bg-purple-500 rounded-full mt-2 animate-bounce"></div>
+            </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-center">
-          <div className="mx-auto h-10 w-0.5 overflow-hidden rounded bg-slate-300/40 sm:h-14">
-            <div className="h-5 w-full motion-safe:animate-[scroll_2s_ease-in-out_infinite] bg-gradient-to-b from-[#4a1f7a] to-[#2f6b3c] sm:h-7" />
-          </div>
-          <span className="mt-2 block text-[11px] font-semibold tracking-wider text-slate-500 sm:text-xs">
-            Discover Our Method
-          </span>
-        </div>
+        {/* Decorative corner elements - mobile responsive */}
+        <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-purple-100 rounded-full -translate-y-16 translate-x-16 sm:-translate-y-24 sm:translate-x-24 md:-translate-y-32 md:translate-x-32"></div>
+        <div className="absolute bottom-0 left-0 w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 bg-purple-200 rounded-full translate-y-20 -translate-x-20 sm:translate-y-30 sm:-translate-x-30 md:translate-y-40 md:-translate-x-40"></div>
       </section>
 
       {/* Quit Smoking Form */}
