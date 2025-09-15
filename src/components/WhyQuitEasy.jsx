@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from 'react';
-import './WhyQuitEasy.css';
 
 const WhyQuitEasy = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -82,87 +81,89 @@ const WhyQuitEasy = () => {
   ];
 
   return (
-    <section className={`why-quiteasy ${isVisible ? 'visible' : ''}`} ref={sectionRef}>
-      {/* Animated Background */}
-      <div className="why-background">
-        <div className="why-overlay"></div>
-        <div className="geometric-shapes">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <div className="shape shape-3"></div>
-          <div className="shape shape-4"></div>
+    <section
+      ref={sectionRef}
+      className={`relative py-24 sm:py-28 md:py-32 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+      } transition-all duration-700 bg-gradient-to-b from-white to-purple-50/30`}
+    >
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-0 right-0 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 bg-purple-100 rounded-full translate-x-16 -translate-y-16 blur-sm"></div>
+        <div className="absolute bottom-0 left-0 w-52 h-52 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-purple-200 rounded-full -translate-x-24 translate-y-24 blur-sm"></div>
+        <div className="absolute inset-0 opacity-30" aria-hidden>
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="why-dot-grid" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" className="text-purple-200" fill="currentColor" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#why-dot-grid)" />
+          </svg>
         </div>
       </div>
 
-      <div className="why-container">
+      <div className="mx-auto max-w-7xl px-6 sm:px-8 md:px-12">
         {/* Header Section */}
-        <div className="why-header">
-          <div className="why-badge">
-            <span className="badge-text">Free Support</span>
-            <div className="badge-accent"></div>
-          </div>
-          
-          <h2 className="why-title">
-            <span className="title-main">Ways to Quit</span>
-            <span className="title-accent">Smoking</span>
+        <div className="text-center mb-16 sm:mb-20 md:mb-24">
+          <span className="inline-block text-xs sm:text-sm md:text-base font-bold tracking-widest text-purple-700 bg-white/70 ring-1 ring-purple-200 rounded-full px-4 py-2 shadow-sm">
+            Free Support
+          </span>
+          <h2 className="mt-5 text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-900 to-purple-600">
+            <span className="text-purple-900">Ways to Quit</span> <span className="text-purple-700">Smoking</span>
           </h2>
-          
-          <p className="why-subtitle">
-            You can try quitting smoking on your own but most people find it very hard. 
-            There are lots of different ways to help you stop smoking. You can use more than one of these ways.
+          <div className="mt-4 h-1 w-28 mx-auto bg-gradient-to-r from-purple-400 to-purple-300 rounded-full"></div>
+          <p className="mt-6 text-lg sm:text-xl text-purple-700/90 max-w-3xl mx-auto">
+            You can try quitting smoking on your own, but most people find it very hard. There are many ways to help you stop smoking — you can use more than one.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="features-section">
-          <div className="features-grid">
-            {features.map((feature, index) => (
-              <div 
-                key={index}
-                className={`feature-card ${activeFeature === index ? 'active' : ''}`}
-                style={{ '--index': index }}
-              >
-                <div className="feature-icon-wrapper">
-                  <div className="feature-icon">{feature.icon}</div>
-                  <div className="icon-glow"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10">
+          {features.map((feature, index) => (
+            <div key={index} className={`group relative overflow-hidden rounded-2xl p-[1px] bg-gradient-to-br from-purple-200 to-purple-100 ${activeFeature === index ? 'shadow-2xl' : 'shadow-lg hover:shadow-xl'}`}>
+              <div className="relative rounded-2xl bg-white/90 backdrop-blur-sm border border-white/60 p-6 sm:p-8 md:p-10 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-[1.01]">
+                <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-purple-50"></div>
+                <div className="relative z-10 flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-500 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-md ring-4 ring-purple-100">
+                      {feature.icon}
+                    </div>
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-purple-900 mb-2">{feature.title}</h3>
+                    <p className="text-purple-700 text-base sm:text-lg leading-relaxed">{feature.description}</p>
+                    <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-purple-100 text-purple-700 px-3 py-1 text-sm font-semibold">
+                      <span>✨</span>
+                      <span>{feature.highlight}</span>
+                    </div>
+                  </div>
                 </div>
-                
-                <div className="feature-content">
-                  <h3 className="feature-title">{feature.title}</h3>
-                  <p className="feature-description">{feature.description}</p>
-                  <div className="feature-highlight">{feature.highlight}</div>
-                </div>
-                
-                <div className="feature-border"></div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         {/* Comparison Section */}
-        <div className="comparison-section">
-          <div className="comparison-header">
-            <h3 className="comparison-title">Going Alone vs. Getting Help</h3>
-            <p className="comparison-subtitle">See why getting support makes quitting easier</p>
+        <div className="mt-16 sm:mt-20 md:mt-24">
+          <div className="text-center mb-10">
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-purple-900">Going Alone vs. Getting Help</h3>
+            <p className="mt-2 text-purple-700">See why getting support makes quitting easier</p>
           </div>
-          
-          <div className="comparison-grid">
+          <div className="grid grid-cols-1 gap-4">
             {comparisons.map((comparison, index) => (
-              <div key={index} className="comparison-row">
-                <div className="comparison-item traditional">
-                  <div className="item-icon">{comparison.icon}</div>
-                  <div className="item-text">{comparison.traditional}</div>
+              <div key={index} className="relative flex items-center justify-between gap-4 rounded-2xl border border-purple-200 bg-white/90 p-5 sm:p-6 shadow-lg">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-700 text-lg">{comparison.icon}</div>
+                  <div className="text-purple-700 font-semibold">{comparison.traditional}</div>
                 </div>
-                
-                <div className="comparison-arrow">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <div className="hidden sm:block text-green-600">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
                 </div>
-                
-                <div className="comparison-item scientific">
-                  <div className="item-icon">{comparison.icon}</div>
-                  <div className="item-text">{comparison.quiteasy}</div>
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-600 text-white text-lg">{comparison.icon}</div>
+                  <div className="text-purple-900 font-bold">{comparison.quiteasy}</div>
                 </div>
               </div>
             ))}
@@ -170,48 +171,49 @@ const WhyQuitEasy = () => {
         </div>
 
         {/* Success Metrics */}
-        <div className="metrics-section">
-          <div className="metrics-grid">
-            <div className="metric-card">
-              <div className="metric-number">Free</div>
-              <div className="metric-label">Support Available</div>
-              <div className="metric-detail">NHS stop smoking services</div>
+        <div className="mt-16 sm:mt-20 md:mt-24">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+            <div className="rounded-2xl border border-purple-200 bg-gradient-to-br from-purple-50 to-white p-5 text-center shadow-md">
+              <div className="text-xl sm:text-2xl font-extrabold text-purple-900">Free</div>
+              <div className="mt-1 text-purple-700 font-semibold">Support Available</div>
+              <div className="mt-1 text-sm text-purple-600">NHS stop smoking services</div>
             </div>
-            
-            <div className="metric-card">
-              <div className="metric-number">Multiple</div>
-              <div className="metric-label">Methods to Choose</div>
-              <div className="metric-detail">Find what works for you</div>
+            <div className="rounded-2xl border border-purple-200 bg-gradient-to-br from-purple-50 to-white p-5 text-center shadow-md">
+              <div className="text-xl sm:text-2xl font-extrabold text-purple-900">Multiple</div>
+              <div className="mt-1 text-purple-700 font-semibold">Methods to Choose</div>
+              <div className="mt-1 text-sm text-purple-600">Find what works for you</div>
             </div>
-            
-            <div className="metric-card">
-              <div className="metric-number">24/7</div>
-              <div className="metric-label">Digital Help</div>
-              <div className="metric-detail">App, texts, and online</div>
+            <div className="rounded-2xl border border-purple-200 bg-gradient-to-br from-purple-50 to-white p-5 text-center shadow-md">
+              <div className="text-xl sm:text-2xl font-extrabold text-purple-900">24/7</div>
+              <div className="mt-1 text-purple-700 font-semibold">Digital Help</div>
+              <div className="mt-1 text-sm text-purple-600">App, texts, and online</div>
             </div>
-            
-            <div className="metric-card">
-              <div className="metric-number">Expert</div>
-              <div className="metric-label">Advice Available</div>
-              <div className="metric-detail">Professional guidance</div>
+            <div className="rounded-2xl border border-purple-200 bg-gradient-to-br from-purple-50 to-white p-5 text-center shadow-md">
+              <div className="text-xl sm:text-2xl font-extrabold text-purple-900">Expert</div>
+              <div className="mt-1 text-purple-700 font-semibold">Advice Available</div>
+              <div className="mt-1 text-sm text-purple-600">Professional guidance</div>
             </div>
           </div>
         </div>
 
         {/* CTA Section */}
-        <div className="why-cta">
-          <div className="cta-content">
-            <h3 className="cta-title">Ready to Get Started?</h3>
-            <p className="cta-text">You can find your local stop smoking service and get free support and advice to help you quit smoking for good.</p>
-            <div className="cta-actions">
-              <button className="cta-button primary">
-                <span className="btn-text">Find Local Service</span>
-                <span className="btn-arrow">→</span>
-              </button>
-              <button className="cta-button secondary">
-                <span className="btn-text">Get Free Support</span>
-                <span className="btn-icon">▶</span>
-              </button>
+        <div className="mt-16 sm:mt-20 md:mt-24">
+          <div className="relative overflow-hidden rounded-3xl p-[1px] bg-gradient-to-br from-purple-200 to-purple-100 shadow-2xl">
+            <div className="relative rounded-3xl border border-white/60 bg-gradient-to-br from-purple-50 to-white p-8 sm:p-10 md:p-12 text-center">
+              <div className="absolute -top-10 -left-10 w-40 h-40 sm:w-56 sm:h-56 rounded-full bg-purple-100"></div>
+              <div className="absolute -bottom-10 -right-10 w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-purple-200"></div>
+              <div className="relative z-10">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-900 to-purple-700">Ready to Get Started?</h3>
+                <p className="mt-4 text-purple-700/90 max-w-3xl mx-auto">You can find your local stop smoking service and get free support and advice to help you quit smoking for good.</p>
+                <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                  <button className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl text-white font-bold text-lg sm:text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-purple-700 to-purple-600">
+                    Find Local Service
+                  </button>
+                  <button className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl transition-all duration-300 bg-white text-purple-700 ring-2 ring-purple-600 hover:bg-purple-600 hover:text-white shadow-lg hover:shadow-xl">
+                    Get Free Support
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

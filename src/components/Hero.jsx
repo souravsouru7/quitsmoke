@@ -21,16 +21,16 @@ const Hero = () => {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
         } transition-all duration-700`}
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2070&auto=format&fit=crop')",
+          backgroundImage: "url('/bk.png')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }}
       >
         {/* Background overlay for better text readability */}
-        <div className="absolute inset-0 bg-white/80 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-white/80 md:bg-white/70 backdrop-blur-md"></div>
         {/* Simple geometric background patterns */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 hidden md:block">
           <div className="absolute top-0 left-0 w-full h-full">
             <div className="absolute top-20 left-20 w-32 h-32 bg-purple-100 rotate-45 rounded-lg"></div>
             <div className="absolute top-40 right-32 w-24 h-24 bg-purple-200 rotate-12 rounded-full"></div>
@@ -39,91 +39,97 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Logo - mobile responsive - slightly larger */}
+        {/* Logo - no background, larger on mobile */}
         <div className="absolute left-4 top-4 sm:left-6 sm:top-6 md:left-8 md:top-8 z-30">
           <img
             src="/logo.png"
             alt="Quit Easy logo"
-            className="h-20 w-auto sm:h-24 md:h-28 lg:h-36 xl:h-44 drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
+            className="h-24 w-auto sm:h-20 md:h-24 lg:h-28 xl:h-32 drop-shadow-2xl transform hover:scale-105 transition-transform duration-300"
             loading="eager"
             decoding="async"
           />
         </div>
 
         {/* Main content - classic mobile design */}
-        <div className="relative z-10 flex min-h-screen items-center justify-center px-6 sm:px-8 md:px-12">
+        <div className="relative z-10 flex min-h-screen items-center justify-center px-5 sm:px-8 md:px-12">
           <div className="text-center max-w-6xl w-full">
-            
-            {/* Main heading - classic mobile design */}
-            <div className="mb-16 sm:mb-20 md:mb-24">
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-tight mb-6 sm:mb-8 md:mb-10">
-                <div className="typewriter-dynamic text-purple-900 mb-3 sm:mb-4">BELIEVE</div>
-                <div className="typewriter-dynamic-delay text-purple-600">in people</div>
-              </h1>
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-purple-700 font-light max-w-4xl mx-auto leading-relaxed typewriter-dynamic-slow">
-                Transform your life with our revolutionary approach to wellness and personal growth
-              </p>
-            </div>
+            {/* Mobile-first content card */}
+            <div className="mx-auto max-w-md md:max-w-4xl bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl px-6 py-8 sm:px-10 sm:py-12 md:bg-transparent md:backdrop-blur-0 md:shadow-none md:px-0 md:py-0">
+              {/* Main heading - mobile refined */}
+              <div className="mb-8 sm:mb-10 md:mb-16">
+                <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight mb-4 sm:mb-6 md:mb-10">
+                  <div className="typewriter-dynamic text-purple-900 mb-2 sm:mb-3">SMALL STEP</div>
+                  <div className="typewriter-dynamic-delay text-purple-600">BIG CHANGE</div>
+                </h1>
+                <p className="text-base sm:text-xl md:text-2xl text-purple-700 font-light max-w-3xl mx-auto leading-relaxed typewriter-dynamic-slow">
+                  Transform your life with our simple, supportive, and proven approach
+                </p>
+              </div>
 
-            {/* Call to action section - classic mobile design */}
-            <div className="mb-16 sm:mb-20 md:mb-24">
-              <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 md:gap-10 justify-center items-center">
-                <button 
-                  onClick={() => setShowForm(true)}
-                  className="w-full sm:w-auto px-12 sm:px-16 md:px-20 py-5 sm:py-6 md:py-7 bg-purple-600 text-white font-bold text-xl sm:text-2xl md:text-3xl rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"
-                >
-                  Start Your Journey
-                </button>
-                
-                <button className="w-full sm:w-auto px-12 sm:px-16 md:px-20 py-5 sm:py-6 md:py-7 border-3 border-purple-600 text-purple-600 font-bold text-xl sm:text-2xl md:text-3xl rounded-2xl hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-xl hover:shadow-2xl">
-                  Learn More
-                </button>
+              {/* CTA buttons */}
+              <div className="mb-8 sm:mb-12 md:mb-16">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 md:gap-8 justify-center items-stretch sm:items-center">
+                  <button
+                    onClick={() => setShowForm(true)}
+                    className="w-full sm:w-auto px-7 sm:px-12 md:px-14 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-bold text-lg sm:text-xl md:text-2xl rounded-2xl shadow-2xl hover:shadow-3xl active:scale-[0.98] sm:hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-300/60"
+                  >
+                    Start Your Journey
+                  </button>
+                  <button className="w-full sm:w-auto px-7 sm:px-12 md:px-14 py-4 sm:py-5 md:py-6 border-2 border-purple-600 text-purple-700 bg-white/60 font-bold text-lg sm:text-xl md:text-2xl rounded-2xl hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-xl hover:shadow-2xl focus:outline-none focus-visible:ring-4 focus-visible:ring-purple-300/60">
+                    Learn More
+                  </button>
+                </div>
               </div>
-            </div>
 
-            {/* Feature cards - classic mobile design */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 max-w-5xl mx-auto">
-              <div className="group bg-white/90 backdrop-blur-sm rounded-3xl p-8 sm:p-10 md:p-12 border-2 border-purple-200 hover:bg-white hover:border-purple-400 transition-all duration-500 transform hover:-translate-y-3 shadow-xl hover:shadow-2xl">
-                <div className="text-6xl sm:text-7xl mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-300">🚀</div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 mb-4 sm:mb-6 typewriter-dynamic-delay">Fast Results</h3>
-                <p className="text-purple-700 text-base sm:text-lg md:text-xl typewriter-dynamic-slow leading-relaxed">See meaningful changes in just 7 days with our proven methodology</p>
-              </div>
-              
-              <div className="group bg-white/90 backdrop-blur-sm rounded-3xl p-8 sm:p-10 md:p-12 border-2 border-purple-200 hover:bg-white hover:border-purple-400 transition-all duration-500 transform hover:-translate-y-3 shadow-xl hover:shadow-2xl">
-                <div className="text-6xl sm:text-7xl mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-300">💪</div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 mb-4 sm:mb-6 typewriter-dynamic-delay">Proven Method</h3>
-                <p className="text-purple-700 text-base sm:text-lg md:text-xl typewriter-dynamic-slow leading-relaxed">Scientifically backed approach trusted by thousands worldwide</p>
-              </div>
-              
-              <div className="group bg-white/90 backdrop-blur-sm rounded-3xl p-8 sm:p-10 md:p-12 border-2 border-purple-200 hover:bg-white hover:border-purple-400 transition-all duration-500 transform hover:-translate-y-3 shadow-xl hover:shadow-2xl sm:col-span-2 lg:col-span-1">
-                <div className="text-6xl sm:text-7xl mb-6 sm:mb-8 group-hover:scale-110 transition-transform duration-300">🤝</div>
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 mb-4 sm:mb-6 typewriter-dynamic-delay">24/7 Support</h3>
-                <p className="text-purple-700 text-base sm:text-lg md:text-xl typewriter-dynamic-slow leading-relaxed">Always here when you need us with round-the-clock assistance</p>
+              {/* Benefit chips - compact grid on mobile */}
+              <div className="mx-auto mt-2 max-w-xl sm:max-w-3xl">
+                <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:justify-center sm:gap-3">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-purple-800 ring-1 ring-purple-200 backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:ring-purple-400 shadow-sm">
+                    <span className="text-lg">🚀</span>
+                    <span className="font-semibold text-sm sm:text-base">Fast Results</span>
+                  </div>
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-purple-800 ring-1 ring-purple-200 backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:ring-purple-400 shadow-sm">
+                    <span className="text-lg">💪</span>
+                    <span className="font-semibold text-sm sm:text-base">Proven Method</span>
+                  </div>
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-purple-800 ring-1 ring-purple-200 backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:ring-purple-400 shadow-sm">
+                    <span className="text-lg">🤝</span>
+                    <span className="font-semibold text-sm sm:text-base">24/7 Support</span>
+                  </div>
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-purple-800 ring-1 ring-purple-200 backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:ring-purple-400 shadow-sm">
+                    <span className="text-lg">🛡️</span>
+                    <span className="font-semibold text-sm sm:text-base">Smoke‑Free Plan</span>
+                  </div>
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1.5 text-purple-800 ring-1 ring-purple-200 backdrop-blur-sm transition hover:scale-105 hover:bg-white hover:ring-purple-400 shadow-sm col-span-2 sm:col-span-1 justify-center">
+                    <span className="text-lg">🧘</span>
+                    <span className="font-semibold text-sm sm:text-base">Stress Coaching</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Floating elements - classic mobile design */}
-        <div className="fixed bottom-6 right-6 sm:bottom-8 sm:right-8 md:bottom-10 md:right-10 z-40">
-          <button className="w-20 h-20 sm:w-22 sm:h-22 md:w-24 md:h-24 bg-purple-600 rounded-full flex items-center justify-center shadow-2xl hover:bg-purple-700 transition-all duration-300 border-3 border-purple-400 hover:scale-110">
-            <span className="text-3xl sm:text-4xl">💬</span>
+        {/* Floating elements - classic mobile design (smaller) */}
+        <div className="hidden sm:block fixed bottom-6 right-6 sm:bottom-8 sm:right-8 md:bottom-10 md:right-10 z-40">
+          <button className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 bg-purple-600 rounded-full flex items-center justify-center shadow-2xl hover:bg-purple-700 transition-all duration-300 border-2 border-purple-400 hover:scale-110">
+            <span className="text-2xl sm:text-3xl">💬</span>
           </button>
         </div>
 
-        {/* Scroll indicator - classic mobile design */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 sm:bottom-8 md:bottom-10 z-30">
+        {/* Scroll indicator - classic mobile design (smaller) */}
+        <div className="hidden sm:block absolute bottom-6 left-1/2 transform -translate-x-1/2 sm:bottom-8 md:bottom-10 z-30">
           <div className="flex flex-col items-center text-purple-600">
-            <span className="text-base sm:text-lg mb-3 sm:mb-4 font-bold">Scroll Down</span>
-            <div className="w-8 h-12 sm:w-10 sm:h-16 border-3 border-purple-300 rounded-full flex justify-center">
-              <div className="w-2 h-4 sm:w-3 sm:h-6 bg-purple-500 rounded-full mt-2 animate-bounce"></div>
+            <span className="text-sm sm:text-base mb-3 sm:mb-4 font-bold">Scroll Down</span>
+            <div className="w-6 h-10 sm:w-8 sm:h-12 border-2 border-purple-300 rounded-full flex justify-center">
+              <div className="w-2 h-4 sm:w-3 sm:h-5 bg-purple-500 rounded-full mt-2 animate-bounce"></div>
             </div>
           </div>
         </div>
 
-        {/* Decorative corner elements - mobile responsive */}
-        <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-purple-100 rounded-full -translate-y-16 translate-x-16 sm:-translate-y-24 sm:translate-x-24 md:-translate-y-32 md:translate-x-32"></div>
-        <div className="absolute bottom-0 left-0 w-40 h-40 sm:w-60 sm:h-60 md:w-80 md:h-80 bg-purple-200 rounded-full translate-y-20 -translate-x-20 sm:translate-y-30 sm:-translate-x-30 md:translate-y-40 md:-translate-x-40"></div>
+        {/* Decorative corner elements - mobile responsive (smaller) */}
+        <div className="hidden sm:block absolute top-0 right-0 w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 bg-purple-100 rounded-full -translate-y-12 translate-x-12 sm:-translate-y-20 sm:translate-x-20 md:-translate-y-24 md:translate-x-24"></div>
+        <div className="hidden sm:block absolute bottom-0 left-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-purple-200 rounded-full translate-y-12 -translate-x-12 sm:translate-y-20 sm:-translate-x-20 md:translate-y-28 md:-translate-x-28"></div>
       </section>
 
       {/* Quit Smoking Form */}

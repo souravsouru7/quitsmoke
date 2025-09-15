@@ -63,8 +63,8 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
     return (
       <div className="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-5">
         <div className="bg-white rounded-3xl p-12 max-w-md w-full text-center shadow-2xl">
-          <div className="text-6xl text-emerald-500 mb-6 animate-bounce">✓</div>
-          <h2 className="text-3xl font-bold text-emerald-500 mb-4">Thank You!</h2>
+          <div className="text-6xl text-purple-600 mb-6 animate-bounce">✓</div>
+          <h2 className="text-3xl font-bold text-purple-700 mb-4">Thank You!</h2>
           <p className="text-gray-600 text-lg leading-relaxed">
             We've received your request to quit smoking. We'll contact you soon to help you on your journey!
           </p>
@@ -89,7 +89,7 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
         </button>
         
         {/* Header */}
-        <div className="bg-gradient-to-br from-emerald-500 via-emerald-600 to-blue-600 p-12 text-center text-white relative overflow-hidden rounded-t-3xl">
+        <div className="bg-gradient-to-br from-purple-700 via-purple-600 to-purple-500 p-12 text-center text-white relative overflow-hidden rounded-t-3xl">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse"></div>
           <div className="relative z-10">
             <div className="w-12 h-12 mx-auto mb-6 text-white/90 animate-bounce">
@@ -120,7 +120,7 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
                 required
                 placeholder="Enter your first name"
                 autoComplete="given-name"
-                className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm"
               />
             </div>
             
@@ -137,7 +137,7 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
                 required
                 placeholder="Enter your last name"
                 autoComplete="family-name"
-                className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm"
               />
             </div>
             
@@ -154,7 +154,7 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
                 required
                 placeholder="Enter your email address"
                 autoComplete="email"
-                className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm"
               />
             </div>
             
@@ -170,7 +170,7 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
                 onChange={(e) => handleInputChange('phone', e.target.value)}
                 placeholder="Enter your phone number (optional)"
                 autoComplete="tel"
-                className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm"
+                className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm"
               />
             </div>
             
@@ -185,7 +185,7 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
                 onChange={(e) => handleInputChange('message', e.target.value)}
                 placeholder="Tell us a bit about your smoking situation or any specific concerns..."
                 rows="4"
-                className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm resize-vertical min-h-[120px]"
+                className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm resize-vertical min-h-[120px]"
               />
             </div>
           </div>
@@ -195,7 +195,7 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
             <button 
               type="submit" 
               disabled={loading} 
-              className="w-full max-w-md px-8 py-5 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white font-bold text-xl rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-4 group"
+              className="w-full max-w-md px-8 py-5 bg-gradient-to-r from-purple-700 to-purple-600 hover:from-purple-700 hover:to-purple-700 text-white font-bold text-xl rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-4 group"
               aria-label={loading ? 'Submitting form...' : 'Submit request to quit smoking'}
             >
               {loading ? (
@@ -218,7 +218,7 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
           {/* Privacy Note */}
           <div className="mt-8 text-center">
             <p className="flex items-center justify-center gap-2 text-gray-500 text-sm font-medium">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-emerald-500">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-purple-600">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
               </svg>
               Your information is secure and will only be used to help you quit smoking.
