@@ -35,7 +35,7 @@ const WhyQuitEasy = ({ onShowForm }) => {
       icon: "🏥",
       title: "Stop Smoking Services",
       description: "Stop smoking services will give you free support and advice. You can speak to them to find out how they can help.",
-      highlight: "Free NHS support available"
+    
     },
     {
       icon: "💊",
