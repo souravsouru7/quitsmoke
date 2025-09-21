@@ -9,6 +9,7 @@ import WhyQuitEasy from './components/WhyQuitEasy';
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 import QuitSmokeForm from './components/QuitSmokeForm';
+import InstallPrompt from './components/InstallPrompt';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,6 +28,17 @@ function App() {
     }
 
     const timeoutId = setTimeout(() => setMinDelayDone(true), 3000);
+
+    // Register service worker for PWA functionality
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('SW registered: ', registration);
+        })
+        .catch((registrationError) => {
+          console.log('SW registration failed: ', registrationError);
+        });
+    }
 
     return () => {
       window.removeEventListener('load', onWindowLoad);
@@ -88,6 +100,7 @@ function App() {
             <SmokeEffects onShowForm={() => setShowForm(true)} />
             <WhyQuitEasy onShowForm={() => setShowForm(true)} />
             <QuitSmokeForm isOpen={showForm} onClose={handleCloseForm} />
+            <InstallPrompt />
           </>
         } />
         

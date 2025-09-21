@@ -146,7 +146,7 @@ const WhyQuitEasy = ({ onShowForm }) => {
         {/* Comparison Section */}
         <div className="mt-16 sm:mt-20 md:mt-24">
           <div className="text-center mb-10">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-purple-900">Going Alone vs. Getting Help</h3>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-purple-900">Doing Alone vs. Getting Help</h3>
             <p className="mt-2 text-purple-700">See why getting support makes quitting easier</p>
           </div>
           <div className="grid grid-cols-1 gap-4">
@@ -176,7 +176,7 @@ const WhyQuitEasy = ({ onShowForm }) => {
             <div className="rounded-2xl border border-purple-200 bg-gradient-to-br from-purple-50 to-white p-5 text-center shadow-md">
               <div className="text-xl sm:text-2xl font-extrabold text-purple-900">Free</div>
               <div className="mt-1 text-purple-700 font-semibold">Support Available</div>
-              <div className="mt-1 text-sm text-purple-600">NHS stop smoking services</div>
+              <div className="mt-1 text-sm text-purple-600">Free virtual support available</div>
             </div>
             <div className="rounded-2xl border border-purple-200 bg-gradient-to-br from-purple-50 to-white p-5 text-center shadow-md">
               <div className="text-xl sm:text-2xl font-extrabold text-purple-900">Multiple</div>
