@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-const SmokeEffects = () => {
+const SmokeEffects = ({ onShowForm }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeEffect, setActiveEffect] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -434,7 +434,10 @@ const SmokeEffects = () => {
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-900 to-purple-700">Ready to Transform Your Life?</h3>
                 <p className="mt-4 text-purple-700/90 max-w-3xl mx-auto">Join thousands who have started their journey to a healthier, smoke-free life.</p>
                 <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                  <button className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl text-white font-bold text-lg sm:text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-purple-700 to-purple-600">
+                  <button 
+                    onClick={onShowForm}
+                    className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl text-white font-bold text-lg sm:text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-purple-700 to-purple-600"
+                  >
                     Start Your Journey
                   </button>
                   <button className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl transition-all duration-300 bg-white text-purple-700 ring-2 ring-purple-600 hover:bg-purple-600 hover:text-white shadow-lg hover:shadow-xl">

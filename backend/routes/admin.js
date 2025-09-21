@@ -60,6 +60,42 @@ router.post('/form/:formId', checkAdmin, async (req, res) => {
   }
 });
 
+// Update form additional data (admin only)
+router.put('/form/:formId', checkAdmin, async (req, res) => {
+  try {
+    const { formId } = req.params;
+    const updateData = req.body;
+    
+    // Find the form and update it
+    const form = await QuitSmokeForm.findByIdAndUpdate(
+      formId,
+      {
+        $set: {
+          medicalConditions: updateData.medicalConditions || [],
+          mentalHealthConditions: updateData.mentalHealthConditions || [],
+          currentMedications: updateData.currentMedications || [],
+          smokingHistory: updateData.smokingHistory || {},
+          aboutYou: updateData.aboutYou || {}
+        }
+      },
+      { new: true, runValidators: true }
+    );
+    
+    if (!form) {
+      return res.status(404).json({ message: 'Form not found' });
+    }
+
+    res.json({
+      message: 'Form updated successfully',
+      form: form
+    });
+
+  } catch (error) {
+    console.error('Update form error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 // Delete form (admin only)
 router.delete('/form/:formId', checkAdmin, async (req, res) => {
   try {

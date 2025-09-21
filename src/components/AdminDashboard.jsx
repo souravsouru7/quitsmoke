@@ -6,6 +6,27 @@ const AdminDashboard = ({ onLogout }) => {
   const [error, setError] = useState('');
   const [selectedForm, setSelectedForm] = useState(null);
   const [showFormDetails, setShowFormDetails] = useState(false);
+  const [showMedicalModal, setShowMedicalModal] = useState(false);
+  const [selectedConditions, setSelectedConditions] = useState({});
+  const [selectedMentalConditions, setSelectedMentalConditions] = useState({});
+  const [selectedMedications, setSelectedMedications] = useState({});
+  const [smokingHistory, setSmokingHistory] = useState({
+    dailyAmount: '',
+    type: '',
+    timeToFirstSmoke: '',
+    difficultWhereForbidden: '',
+    hardestToQuit: '',
+    smokeMoreMorning: '',
+    smokeWhenIll: ''
+  });
+  const [aboutYou, setAboutYou] = useState({
+    yearsSmoked: '',
+    smokeCannabis: '',
+    haveChildren: '',
+    liveWithSmokers: '',
+    useHomeOxygen: ''
+  });
+  const [fagerstromScore, setFagerstromScore] = useState(0);
 
   useEffect(() => {
     fetchForms();
@@ -78,12 +99,200 @@ const AdminDashboard = ({ onLogout }) => {
     });
   };
 
+  // Medical conditions list (based on provided image)
+  const medicalConditions = [
+    'Acid Reflux', 'Alzheimers', 'Angina', 'Arthritis', 'Atrial Fibrillation', 'Autoimmune disease', 'Blood Pressure', 'Bowel Prolapse', 'Brain Injury', 'Bronchitis', 'Cancer', 'Cardiac Disease', 'Cataracts', 'Central Nervous System disorder', 'Cerebrospinal Fluid Leak (CSF Leak)', 'CHD', 'Chest Problems', 'Chronic Bronchitis', 'Contact with TB', 'COPD', "Crohn's Disease", 'Currently being prescribed statins to lower cholesterol', 'Deep Vein Thrombosis', 'Dementia', 'Diabetes Insipidus', 'Diabetes Type 1', 'Diabetes Type 2', 'Did Not Disclose', 'Diverticulosis', 'Dyslexia', 'Dyspraxia', 'Eating Disorder', 'Eczema', 'Emphysema', 'Endocrine disorder', 'Epilepsy', 'Fibromyalgia', 'Gynaecological problems', 'Haematological disorder', 'Hearing Impairment', 'Heart Attack', 'Heart Blockage', 'Heart Disease', 'Heart Failure', 'Heart Problems', 'Hepatitis C', 'Hernia', 'High Blood Cholesterol', 'High Blood Pressure', 'HIV/ Aids', 'Hypermobility', 'Hypertension', 'Idiopathic Intracranial Hypertension (IIH)', 'Infectious Hepatitis A', 'Inflammatory bowel disease', 'Inflammatory bowel Syndrome (IBS)', 'Liver Disease', 'Lung Cancer', 'Lymphoedema', 'Manic-Depressive Disorder', 'Migraine', 'Multiple Sclerosis (MS)', 'Musculoskeletal Disorder', 'No Medical Conditions', 'Not stated on referral', 'Osteoarthritis', 'Osteoporosis', 'Other', 'Other stomach problems', "Parkinson's Disease", 'peripheral arterial disease', 'Pneumonia', 'Polycystic Ovary Syndrome', 'Psoriasis', 'Reaction To NRT', 'Respiratory Disease', 'Respiratory Problems', "Reynaud's Disease", 'Rheumatoid Arthritis', 'Sciatic Arthritis', 'Sciatica', 'Serum Hepatitis B', 'Skin Conditions', 'Sleep Apnoea', 'Stomach Ulcer', 'Stroke', 'Thromboembolic disorder', 'Thyroid Disease', 'Thyroid: Overactive', 'Tinnitus', 'Transient Ischemic Attack (Mini Stroke)', 'Turner Syndrome', 'Under/Overactive Thyroid'
+  ];
+
+  const toggleCondition = (name) => {
+    setSelectedConditions((prev) => ({
+      ...prev,
+      [name]: !prev[name]
+    }));
+  };
+
+  // Mental health conditions list (based on provided image)
+  const mentalHealthConditions = [
+    'ADHD', 'Agoraphobia', 'Anxiety', 'Autism', 'Bipolar Disorder',
+    'Borderline Personality Disorder', 'Complex PTSD', 'Depression',
+    'Depression - Mild to Mod', 'Dissociative Disorder', 'Emotional Instability',
+    'Emotionally Unstable Personality Disorder (EUPD)', 'Night Terrors',
+    'Obsessive Compulsive Disorder (OCD)', 'Panic Attacks',
+    'Paranoid Personality Disorder', 'Paranoid Schizophrenia',
+    'Personality Disorder', 'Post Traumatic Stress Disorder (PTSD)',
+    'Psychosis', 'Schizoaffective Disorder', 'Schizophrenia'
+  ];
+
+  const toggleMentalCondition = (name) => {
+    setSelectedMentalConditions((prev) => ({
+      ...prev,
+      [name]: !prev[name]
+    }));
+  };
+
+  // Current medication list (based on provided image)
+  const currentMedications = [
+    'ADHD meds','Amantadine','Aminophylline','Amytriptyline','Analgesics','Anti Epileptics','Anti malarials','Anti-arrhythmic',
+    'Antivirals','Atomoxetine','Beta Blockers','Bronchodilators','Carbamazepine','Chemotherapy','Chlorpromazine','Citalopram',
+    'Duloxetine','Famotidine','Flecainide','Fluoxetine','Fluphenazine','Furosemide','Gabapentin','Galantamine',
+    'Lorazepam','MAOI\'s','Modobemide','Nitrates','Nitrazepam','Non steroidal anti-inflammatory','Not Listed','Olanzapine',
+    'Ramipril','Ranitidine','Risperidone','Sertraline','Statins','Steroids','Tamoxifen','Theophylline'
+  ];
+
+  const toggleMedication = (name) => {
+    setSelectedMedications((prev) => ({
+      ...prev,
+      [name]: !prev[name]
+    }));
+  };
+
+  // Smoking history options and score mapping (Fagerström Test)
+  const dailyAmountOptions = ['Up to 10', '11 - 20', '21 - 30', '31+'];
+  const typeOptions = ['Cigarette', 'Roll Up', 'Vape', 'Cigar', 'Pipe', 'Other'];
+  const timeToFirstOptions = ['within 5 minutes', '6 - 30 minutes', '31 - 60 minutes', 'over 60 minutes'];
+  const yesNoOptions = ['Yes', 'No'];
+  const hardestToQuitOptions = ['Morning', 'Any of the others'];
+
+  const scoreMappings = {
+    timeToFirstSmoke: {
+      'within 5 minutes': 3,
+      '6 - 30 minutes': 2,
+      '31 - 60 minutes': 1,
+      'over 60 minutes': 0
+    },
+    dailyAmount: {
+      'Up to 10': 0,
+      '11 - 20': 1,
+      '21 - 30': 2,
+      '31+': 3
+    },
+    difficultWhereForbidden: {
+      Yes: 1,
+      No: 0
+    },
+    hardestToQuit: {
+      Morning: 1,
+      'Any of the others': 0
+    },
+    smokeMoreMorning: {
+      Yes: 1,
+      No: 0
+    },
+    smokeWhenIll: {
+      Yes: 1,
+      No: 0
+    }
+  };
+
+  const computeFagerstromScore = () => {
+    let total = 0;
+    total += scoreMappings.timeToFirstSmoke[smokingHistory.timeToFirstSmoke] || 0;
+    total += scoreMappings.dailyAmount[smokingHistory.dailyAmount] || 0;
+    total += scoreMappings.difficultWhereForbidden[smokingHistory.difficultWhereForbidden] || 0;
+    total += scoreMappings.hardestToQuit[smokingHistory.hardestToQuit] || 0;
+    total += scoreMappings.smokeMoreMorning[smokingHistory.smokeMoreMorning] || 0;
+    total += scoreMappings.smokeWhenIll[smokingHistory.smokeWhenIll] || 0;
+    setFagerstromScore(total);
+  };
+
+  const loadFormData = () => {
+    if (!selectedForm) return;
+
+    // Load medical conditions
+    const medicalConditionsObj = {};
+    if (selectedForm.medicalConditions) {
+      selectedForm.medicalConditions.forEach(condition => {
+        medicalConditionsObj[condition] = true;
+      });
+    }
+    setSelectedConditions(medicalConditionsObj);
+
+    // Load mental health conditions
+    const mentalHealthConditionsObj = {};
+    if (selectedForm.mentalHealthConditions) {
+      selectedForm.mentalHealthConditions.forEach(condition => {
+        mentalHealthConditionsObj[condition] = true;
+      });
+    }
+    setSelectedMentalConditions(mentalHealthConditionsObj);
+
+    // Load current medications
+    const currentMedicationsObj = {};
+    if (selectedForm.currentMedications) {
+      selectedForm.currentMedications.forEach(medication => {
+        currentMedicationsObj[medication] = true;
+      });
+    }
+    setSelectedMedications(currentMedicationsObj);
+
+    // Load smoking history
+    if (selectedForm.smokingHistory) {
+      setSmokingHistory(selectedForm.smokingHistory);
+      setFagerstromScore(selectedForm.smokingHistory.fagerstromScore || 0);
+    }
+
+    // Load about you
+    if (selectedForm.aboutYou) {
+      setAboutYou(selectedForm.aboutYou);
+    }
+  };
+
+  const saveFormData = async () => {
+    if (!selectedForm) return;
+
+    try {
+      // Convert selected conditions to arrays
+      const medicalConditionsArray = Object.keys(selectedConditions).filter(key => selectedConditions[key]);
+      const mentalHealthConditionsArray = Object.keys(selectedMentalConditions).filter(key => selectedMentalConditions[key]);
+      const currentMedicationsArray = Object.keys(selectedMedications).filter(key => selectedMedications[key]);
+
+      // Update smoking history with computed score
+      const updatedSmokingHistory = {
+        ...smokingHistory,
+        fagerstromScore: fagerstromScore
+      };
+
+      const updateData = {
+        medicalConditions: medicalConditionsArray,
+        mentalHealthConditions: mentalHealthConditionsArray,
+        currentMedications: currentMedicationsArray,
+        smokingHistory: updatedSmokingHistory,
+        aboutYou: aboutYou
+      };
+
+      const response = await fetch(`http://localhost:5000/api/admin/form/${selectedForm._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...updateData,
+          email: 'admin@quitsmoke.com',
+          password: 'admin123'
+        }),
+      });
+
+      if (response.ok) {
+        alert('Form data saved successfully!');
+        setShowMedicalModal(false);
+        // Refresh the forms list
+        fetchForms();
+      } else {
+        const errorData = await response.json();
+        alert(errorData.message || 'Failed to save form data');
+      }
+    } catch (error) {
+      console.error('Save form data error:', error);
+      alert('Network error. Please try again.');
+    }
+  };
+
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 p-5">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-fuchsia-50 to-purple-100 p-5">
         <div className="flex items-center justify-center min-h-screen">
           <div className="text-center">
-            <div className="w-16 h-16 border-4 border-emerald-200 border-t-emerald-600 rounded-full animate-spin mx-auto mb-4"></div>
+            <div className="w-16 h-16 border-4 border-purple-200 border-t-fuchsia-600 rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-600 text-lg font-medium">Loading your dashboard...</p>
           </div>
         </div>
@@ -92,12 +301,12 @@ const AdminDashboard = ({ onLogout }) => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-emerald-50 p-5">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-fuchsia-50 to-purple-100 p-5">
       {/* Header Section */}
       <div className="bg-white/80 backdrop-blur-xl p-8 rounded-3xl shadow-xl mb-8 border border-white/50">
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+            <div className="w-16 h-16 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-2xl flex items-center justify-center shadow-lg">
               <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
               </svg>
@@ -111,7 +320,7 @@ const AdminDashboard = ({ onLogout }) => {
           </div>
           
           <div className="flex items-center gap-4">
-            <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 py-3 rounded-2xl font-semibold shadow-lg">
+            <div className="bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white px-6 py-3 rounded-2xl font-semibold shadow-lg">
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -142,8 +351,8 @@ const AdminDashboard = ({ onLogout }) => {
               <p className="text-gray-600 text-sm font-medium">Total Submissions</p>
               <p className="text-3xl font-bold text-slate-800">{forms.length}</p>
             </div>
-            <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
+              <svg className="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
@@ -162,8 +371,8 @@ const AdminDashboard = ({ onLogout }) => {
                 }).length}
               </p>
             </div>
-            <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 bg-fuchsia-100 rounded-xl flex items-center justify-center">
+              <svg className="w-6 h-6 text-fuchsia-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
             </div>
@@ -192,8 +401,8 @@ const AdminDashboard = ({ onLogout }) => {
               <p className="text-gray-600 text-sm font-medium">Success Rate</p>
               <p className="text-3xl font-bold text-slate-800">100%</p>
             </div>
-            <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-              <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center">
+              <svg className="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -217,7 +426,7 @@ const AdminDashboard = ({ onLogout }) => {
         <div className="mb-8">
           <div className="flex items-center gap-3 mb-6">
             <h2 className="text-3xl font-bold text-slate-800">Form Submissions</h2>
-            <div className="px-3 py-1 bg-emerald-100 text-emerald-800 text-sm font-medium rounded-full">
+            <div className="px-3 py-1 bg-purple-100 text-purple-800 text-sm font-medium rounded-full">
               {forms.length} entries
             </div>
           </div>
@@ -242,13 +451,13 @@ const AdminDashboard = ({ onLogout }) => {
                 >
                   <div className="flex justify-between items-start mb-4 pb-4 border-b border-gray-200/50">
                     <div>
-                      <h3 className="text-xl font-bold text-slate-800 group-hover:text-emerald-600 transition-colors duration-300">
+                      <h3 className="text-xl font-bold text-slate-800 group-hover:text-purple-600 transition-colors duration-300">
                         {form.firstName} {form.lastName}
                       </h3>
                       <p className="text-gray-500 text-sm">{formatDate(form.createdAt)}</p>
                     </div>
-                    <div className="w-10 h-10 bg-emerald-100 rounded-xl flex items-center justify-center group-hover:bg-emerald-200 transition-colors duration-300">
-                      <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-200 transition-colors duration-300">
+                      <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                       </svg>
                     </div>
@@ -283,13 +492,27 @@ const AdminDashboard = ({ onLogout }) => {
                         setSelectedForm(form);
                         setShowFormDetails(true);
                       }}
-                      className="flex-1 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white border-none rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                      className="flex-1 py-3 bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700 text-white border-none rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                       </svg>
                       View Details
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSelectedForm(form);
+                        setShowMedicalModal(true);
+                        // Load existing data after a short delay to ensure state is set
+                        setTimeout(() => loadFormData(), 100);
+                      }}
+                      className="flex-1 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white border-none rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2"
+                    >
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m2-4h.01M12 6a9 9 0 100 18 9 9 0 000-18z" />
+                      </svg>
+                      More Info
                     </button>
                     <button
                       onClick={() => handleDeleteForm(form._id)}
@@ -330,7 +553,7 @@ const AdminDashboard = ({ onLogout }) => {
             <div className="p-8">
               <div className="mb-8 pb-6 border-b border-gray-100">
                 <h3 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                   Personal Information
@@ -379,11 +602,192 @@ const AdminDashboard = ({ onLogout }) => {
                   </div>
                   <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
                     <span className="text-gray-600 font-medium min-w-[100px]">Status:</span>
-                    <span className="px-3 py-1 bg-emerald-100 text-emerald-800 text-sm font-medium rounded-full">
+                    <span className="px-3 py-1 bg-purple-100 text-purple-800 text-sm font-medium rounded-full">
                       {selectedForm.status}
                     </span>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Medical Conditions Modal */}
+      {showMedicalModal && selectedForm && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-5" onClick={() => setShowMedicalModal(false)}>
+          <div className="bg-white rounded-3xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-white/20" onClick={(e) => e.stopPropagation()}>
+            <div className="flex justify-between items-center p-8 border-b border-gray-200/50">
+              <div>
+                <h2 className="text-3xl font-bold text-slate-800">Medical Conditions</h2>
+                <p className="text-gray-600 mt-1">Select all that apply for {selectedForm.firstName} {selectedForm.lastName}</p>
+              </div>
+              <button
+                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-xl flex items-center justify-center transition-colors duration-300"
+                onClick={() => setShowMedicalModal(false)}
+              >
+                <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <div className="p-8">
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-slate-800 mb-4">Medical Conditions</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {medicalConditions.map((cond) => (
+                    <label key={cond} className="flex items-start gap-3 p-3 rounded-xl border border-gray-200 hover:border-purple-300 transition-colors cursor-pointer bg-white">
+                      <input
+                        type="checkbox"
+                        checked={!!selectedConditions[cond]}
+                        onChange={() => toggleCondition(cond)}
+                        className="mt-1 h-4 w-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500"
+                      />
+                      <span className="text-sm text-slate-800">{cond}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-slate-800 mb-4">Mental Health Conditions</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {mentalHealthConditions.map((cond) => (
+                    <label key={cond} className="flex items-start gap-3 p-3 rounded-xl border border-gray-200 hover:border-indigo-300 transition-colors cursor-pointer bg-white">
+                      <input
+                        type="checkbox"
+                        checked={!!selectedMentalConditions[cond]}
+                        onChange={() => toggleMentalCondition(cond)}
+                        className="mt-1 h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                      />
+                      <span className="text-sm text-slate-800">{cond}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-slate-800 mb-4">Current Medication</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {currentMedications.map((med) => (
+                    <label key={med} className="flex items-start gap-3 p-3 rounded-xl border border-gray-200 hover:border-fuchsia-300 transition-colors cursor-pointer bg-white">
+                      <input
+                        type="checkbox"
+                        checked={!!selectedMedications[med]}
+                        onChange={() => toggleMedication(med)}
+                        className="mt-1 h-4 w-4 rounded border-gray-300 text-fuchsia-600 focus:ring-fuchsia-500"
+                      />
+                      <span className="text-sm text-slate-800">{med}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {/* Smoking History and About You */}
+              <div className="mb-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                  <div className="bg-white rounded-xl p-5 border border-gray-200">
+                    <h3 className="text-lg font-bold text-slate-800 mb-4">Fagerstrom Score</h3>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between gap-4">
+                        <label className="text-sm text-slate-700">Daily Amount Smoked</label>
+                        <select value={smokingHistory.dailyAmount} onChange={(e) => setSmokingHistory({ ...smokingHistory, dailyAmount: e.target.value })} className="border rounded-lg px-3 py-2 text-sm">
+                          <option value="">Select</option>
+                          {dailyAmountOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                      </div>
+                      <div className="flex items-center justify-between gap-4">
+                        <label className="text-sm text-slate-700">Type</label>
+                        <select value={smokingHistory.type} onChange={(e) => setSmokingHistory({ ...smokingHistory, type: e.target.value })} className="border rounded-lg px-3 py-2 text-sm">
+                          <option value="">Select</option>
+                          {typeOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                      </div>
+                      <div className="flex items-center justify-between gap-4">
+                        <label className="text-sm text-slate-700">How soon after waking for 1st smoke?</label>
+                        <select value={smokingHistory.timeToFirstSmoke} onChange={(e) => setSmokingHistory({ ...smokingHistory, timeToFirstSmoke: e.target.value })} className="border rounded-lg px-3 py-2 text-sm">
+                          <option value="">Select</option>
+                          {timeToFirstOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                      </div>
+                      <div className="flex items-center justify-between gap-4">
+                        <label className="text-sm text-slate-700">Difficult not to smoke where forbidden?</label>
+                        <select value={smokingHistory.difficultWhereForbidden} onChange={(e) => setSmokingHistory({ ...smokingHistory, difficultWhereForbidden: e.target.value })} className="border rounded-lg px-3 py-2 text-sm">
+                          <option value="">Select</option>
+                          {yesNoOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                      </div>
+                      <div className="flex items-center justify-between gap-4">
+                        <label className="text-sm text-slate-700">Hardest smoke to quit?</label>
+                        <select value={smokingHistory.hardestToQuit} onChange={(e) => setSmokingHistory({ ...smokingHistory, hardestToQuit: e.target.value })} className="border rounded-lg px-3 py-2 text-sm">
+                          <option value="">Select</option>
+                          {hardestToQuitOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                      </div>
+                      <div className="flex items-center justify-between gap-4">
+                        <label className="text-sm text-slate-700">Smoke more within first hours of waking?</label>
+                        <select value={smokingHistory.smokeMoreMorning} onChange={(e) => setSmokingHistory({ ...smokingHistory, smokeMoreMorning: e.target.value })} className="border rounded-lg px-3 py-2 text-sm">
+                          <option value="">Select</option>
+                          {yesNoOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                      </div>
+                      <div className="flex items-center justify-between gap-4">
+                        <label className="text-sm text-slate-700">Smoke when ill in bed?</label>
+                        <select value={smokingHistory.smokeWhenIll} onChange={(e) => setSmokingHistory({ ...smokingHistory, smokeWhenIll: e.target.value })} className="border rounded-lg px-3 py-2 text-sm">
+                          <option value="">Select</option>
+                          {yesNoOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <button onClick={computeFagerstromScore} className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-semibold">Score Dependence</button>
+                        <div className="text-sm text-slate-700">Total Score <span className="font-bold text-blue-700">{fagerstromScore}</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-xl p-5 border border-gray-200">
+                    <h3 className="text-lg font-bold text-slate-800 mb-4">About you</h3>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between gap-4">
+                        <label className="text-sm text-slate-700">How many years have you smoked?</label>
+                        <select value={aboutYou.yearsSmoked} onChange={(e) => setAboutYou({ ...aboutYou, yearsSmoked: e.target.value })} className="border rounded-lg px-3 py-2 text-sm">
+                          <option value="">Select</option>
+                          {['0 - 5 Years','6 - 10 Years','11 - 20 Years','21 - 30 Years','31 - 40 Years','41+ Years'].map((o) => <option key={o} value={o}>{o}</option>)}
+                        </select>
+                      </div>
+                      {[
+                        { key: 'smokeCannabis', label: 'Do you smoke Cannabis?' },
+                        { key: 'haveChildren', label: 'Do you have children living with you?' },
+                        { key: 'liveWithSmokers', label: 'Do you live with any other smokers?' },
+                        { key: 'useHomeOxygen', label: 'Do you use home oxygen?' }
+                      ].map(({ key, label }) => (
+                        <div key={key} className="flex items-center justify-between gap-4">
+                          <label className="text-sm text-slate-700">{label}</label>
+                          <select value={aboutYou[key]} onChange={(e) => setAboutYou({ ...aboutYou, [key]: e.target.value })} className="border rounded-lg px-3 py-2 text-sm">
+                            <option value="">Select</option>
+                            {yesNoOptions.map((o) => <option key={o} value={o}>{o}</option>)}
+                          </select>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row justify-end gap-3">
+                <button
+                  onClick={() => { setSelectedConditions({}); setSelectedMentalConditions({}); setSelectedMedications({}); setSmokingHistory({ dailyAmount: '', type: '', timeToFirstSmoke: '', difficultWhereForbidden: '', hardestToQuit: '', smokeMoreMorning: '', smokeWhenIll: '' }); setAboutYou({ yearsSmoked: '', smokeCannabis: '', haveChildren: '', liveWithSmokers: '', useHomeOxygen: '' }); setFagerstromScore(0); }}
+                  className="px-5 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-slate-700 font-semibold transition"
+                >
+                  Clear Selection
+                </button>
+                <button
+                  onClick={saveFormData}
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-fuchsia-600 hover:from-purple-700 hover:to-fuchsia-700 text-white font-semibold shadow"
+                >
+                  Save & Close
+                </button>
               </div>
             </div>
           </div>

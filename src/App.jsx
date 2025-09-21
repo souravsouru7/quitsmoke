@@ -15,6 +15,7 @@ function App() {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [minDelayDone, setMinDelayDone] = useState(false);
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     const onWindowLoad = () => setHasLoaded(true);
@@ -39,12 +40,27 @@ function App() {
     }
   }, [hasLoaded, minDelayDone]);
 
+  // Auto-show form after 3 seconds when app loads
+  useEffect(() => {
+    if (!isLoading) {
+      const formTimer = setTimeout(() => {
+        setShowForm(true);
+      }, 3000);
+      
+      return () => clearTimeout(formTimer);
+    }
+  }, [isLoading]);
+
   const handleAdminLogin = () => {
     setIsAdminLoggedIn(true);
   };
 
   const handleAdminLogout = () => {
     setIsAdminLoggedIn(false);
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false);
   };
 
   if (isLoading) {
@@ -67,15 +83,11 @@ function App() {
         {/* Main website route */}
         <Route path="/" element={
           <>
-            <Hero />
-            <HowItWorks />
-            <SmokeEffects />
-            <WhyQuitEasy />
-            <QuitSmokeForm />
-           
-            
-            
-           
+            <Hero onShowForm={() => setShowForm(true)} />
+            <HowItWorks onShowForm={() => setShowForm(true)} />
+            <SmokeEffects onShowForm={() => setShowForm(true)} />
+            <WhyQuitEasy onShowForm={() => setShowForm(true)} />
+            <QuitSmokeForm isOpen={showForm} onClose={handleCloseForm} />
           </>
         } />
         

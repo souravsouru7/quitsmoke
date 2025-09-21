@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-const WhyQuitEasy = () => {
+const WhyQuitEasy = ({ onShowForm }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const sectionRef = useRef(null);
@@ -46,7 +46,7 @@ const WhyQuitEasy = () => {
     {
       icon: "📱",
       title: "Digital Support",
-      description: "Use the free NHS Quit Smoking app, get daily text support, and access videos and information online.",
+      description: "Use the free Quiteasy app, get daily text support, and access videos and information online.",
       highlight: "24/7 digital help"
     },
     {
@@ -154,7 +154,7 @@ const WhyQuitEasy = () => {
               <div key={index} className="relative flex items-center justify-between gap-4 rounded-2xl border border-purple-200 bg-white/90 p-5 sm:p-6 shadow-lg">
                 <div className="flex items-center gap-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-700 text-lg">{comparison.icon}</div>
-                  <div className="text-purple-700 font-semibold">{comparison.traditional}</div>
+                  <div className="text-purple-900 font-bold">{comparison.traditional}</div>
                 </div>
                 <div className="hidden sm:block text-green-600">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -206,10 +206,16 @@ const WhyQuitEasy = () => {
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-900 to-purple-700">Ready to Get Started?</h3>
                 <p className="mt-4 text-purple-700/90 max-w-3xl mx-auto">You can find your local stop smoking service and get free support and advice to help you quit smoking for good.</p>
                 <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                  <button className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl text-white font-bold text-lg sm:text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-purple-700 to-purple-600">
+                  <button 
+                    onClick={onShowForm}
+                    className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl text-white font-bold text-lg sm:text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-purple-700 to-purple-600"
+                  >
                     Find Local Service
                   </button>
-                  <button className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl transition-all duration-300 bg-white text-purple-700 ring-2 ring-purple-600 hover:bg-purple-600 hover:text-white shadow-lg hover:shadow-xl">
+                  <button 
+                    onClick={onShowForm}
+                    className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl transition-all duration-300 bg-white text-purple-700 ring-2 ring-purple-600 hover:bg-purple-600 hover:text-white shadow-lg hover:shadow-xl"
+                  >
                     Get Free Support
                   </button>
                 </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const HowItWorks = () => {
+const HowItWorks = ({ onShowForm }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
 
@@ -162,7 +162,10 @@ const HowItWorks = () => {
                   Join thousands of people who have successfully quit smoking with QuitEasy's innovative approach
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                  <button className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl text-white font-bold text-lg sm:text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-purple-700 to-purple-600">
+                  <button 
+                    onClick={onShowForm}
+                    className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl text-white font-bold text-lg sm:text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-purple-700 to-purple-600"
+                  >
                     Begin Your Journey
                   </button>
                   <button className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl transition-all duration-300 bg-white text-purple-700 ring-2 ring-purple-600 hover:bg-purple-600 hover:text-white shadow-lg hover:shadow-xl">

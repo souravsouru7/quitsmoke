@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import QuitSmokeForm from './QuitSmokeForm';
 
-const Hero = () => {
-  const [showForm, setShowForm] = useState(false);
+const Hero = ({ onShowForm }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -10,9 +8,6 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleCloseForm = () => {
-    setShowForm(false);
-  };
 
   return (
     <>
@@ -70,7 +65,7 @@ const Hero = () => {
               <div className="mb-8 sm:mb-12 md:mb-16">
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 md:gap-8 justify-center items-stretch sm:items-center">
                   <button
-                    onClick={() => setShowForm(true)}
+                    onClick={onShowForm}
                     className="w-full sm:w-auto px-7 sm:px-12 md:px-14 py-4 sm:py-5 md:py-6 bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-bold text-lg sm:text-xl md:text-2xl rounded-2xl shadow-2xl hover:shadow-3xl active:scale-[0.98] sm:hover:scale-105 transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-fuchsia-300/60"
                   >
                     Start Your Journey
@@ -131,9 +126,6 @@ const Hero = () => {
         <div className="hidden sm:block absolute top-0 right-0 w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 bg-purple-100 rounded-full -translate-y-12 translate-x-12 sm:-translate-y-20 sm:translate-x-20 md:-translate-y-24 md:translate-x-24"></div>
         <div className="hidden sm:block absolute bottom-0 left-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-purple-200 rounded-full translate-y-12 -translate-x-12 sm:translate-y-20 sm:-translate-x-20 md:translate-y-28 md:-translate-x-28"></div>
       </section>
-
-      {/* Quit Smoking Form */}
-      <QuitSmokeForm isOpen={showForm} onClose={handleCloseForm} />
     </>
   );
 };

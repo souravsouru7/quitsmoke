@@ -37,6 +37,91 @@ const quitSmokeFormSchema = new mongoose.Schema({
     type: String,
     trim: true,
     default: ''
+  },
+  // Medical conditions
+  medicalConditions: [{
+    type: String,
+    trim: true
+  }],
+  // Mental health conditions
+  mentalHealthConditions: [{
+    type: String,
+    trim: true
+  }],
+  // Current medications
+  currentMedications: [{
+    type: String,
+    trim: true
+  }],
+  // Smoking history (Fagerstrom Score)
+  smokingHistory: {
+    dailyAmount: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    type: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    timeToFirstSmoke: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    difficultWhereForbidden: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    hardestToQuit: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    smokeMoreMorning: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    smokeWhenIll: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    fagerstromScore: {
+      type: Number,
+      default: 0
+    }
+  },
+  // About you section
+  aboutYou: {
+    yearsSmoked: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    smokeCannabis: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    haveChildren: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    liveWithSmokers: {
+      type: String,
+      trim: true,
+      default: ''
+    },
+    useHomeOxygen: {
+      type: String,
+      trim: true,
+      default: ''
+    }
   }
 }, {
   timestamps: true

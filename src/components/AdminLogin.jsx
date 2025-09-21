@@ -44,12 +44,12 @@ const AdminLogin = ({ onLogin }) => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-emerald-50 via-emerald-100 to-blue-100 p-5 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 via-fuchsia-50 to-purple-100 p-5 relative overflow-hidden">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-40 left-40 w-80 h-80 bg-emerald-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-fuchsia-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-40 left-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
       {/* Floating Particles */}
@@ -57,7 +57,7 @@ const AdminLogin = ({ onLogin }) => {
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-emerald-400 rounded-full opacity-30 animate-pulse"
+            className="absolute w-2 h-2 bg-purple-500 rounded-full opacity-30 animate-pulse"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
@@ -68,26 +68,28 @@ const AdminLogin = ({ onLogin }) => {
         ))}
       </div>
 
-      <div className="relative z-10 bg-white/90 backdrop-blur-xl p-10 rounded-3xl shadow-2xl w-full max-w-md border border-emerald-200/50">
+      {/* Card with gradient border */}
+      <div className="relative z-10 w-full max-w-md rounded-3xl p-[2px] bg-gradient-to-r from-purple-400/40 via-fuchsia-400/40 to-purple-400/40 shadow-2xl">
+        <div className="bg-white/90 backdrop-blur-xl p-10 rounded-3xl border border-purple-200/50">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl mb-4 shadow-lg">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-2xl mb-4 shadow-lg">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold text-slate-800 mb-2">Admin Portal</h2>
-          <p className="text-gray-600 text-sm">Access your dashboard securely</p>
+          <h2 className="text-3xl font-bold text-purple-900 mb-2">Admin Portal</h2>
+          <p className="text-purple-700/80 text-sm">Access your dashboard securely</p>
         </div>
         
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="group">
-            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-emerald-600 transition-colors duration-300">
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-purple-600 transition-colors duration-300">
               Email Address
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg className="h-5 w-5 text-gray-400 group-focus-within:text-emerald-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5 text-gray-400 group-focus-within:text-purple-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
                 </svg>
               </div>
@@ -99,18 +101,18 @@ const AdminLogin = ({ onLogin }) => {
                 onChange={handleChange}
                 required
                 placeholder="admin@quitsmoke.com"
-                className="w-full pl-10 pr-4 py-4 bg-white/80 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-500 transition-all duration-300 focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100"
+                className="w-full pl-10 pr-4 py-4 bg-white/80 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-500 transition-all duration-300 focus:outline-none focus:border-purple-500 focus:bg-white focus:ring-4 focus:ring-fuchsia-100"
               />
             </div>
           </div>
           
           <div className="group">
-            <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-emerald-600 transition-colors duration-300">
+            <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-3 group-focus-within:text-purple-600 transition-colors duration-300">
               Password
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <svg className="h-5 w-5 text-gray-400 group-focus-within:text-emerald-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="h-5 w-5 text-gray-400 group-focus-within:text-purple-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
@@ -122,7 +124,7 @@ const AdminLogin = ({ onLogin }) => {
                 onChange={handleChange}
                 required
                 placeholder="Enter your password"
-                className="w-full pl-10 pr-4 py-4 bg-white/80 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-500 transition-all duration-300 focus:outline-none focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-100"
+                className="w-full pl-10 pr-4 py-4 bg-white/80 border-2 border-gray-200 rounded-xl text-gray-800 placeholder-gray-500 transition-all duration-300 focus:outline-none focus:border-purple-500 focus:bg-white focus:ring-4 focus:ring-fuchsia-100"
               />
             </div>
           </div>
@@ -141,7 +143,7 @@ const AdminLogin = ({ onLogin }) => {
           <button 
             type="submit" 
             disabled={loading}
-            className="w-full py-4 bg-gradient-to-r from-emerald-500 via-emerald-600 to-emerald-700 text-white rounded-xl text-base font-bold transition-all duration-300 hover:from-emerald-600 hover:via-emerald-700 hover:to-emerald-800 hover:shadow-2xl hover:shadow-emerald-500/25 hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none group"
+            className="w-full py-4 bg-gradient-to-r from-purple-600 via-fuchsia-600 to-purple-700 text-white rounded-xl text-base font-bold transition-all duration-300 hover:from-purple-700 hover:via-fuchsia-700 hover:to-purple-800 hover:shadow-2xl hover:shadow-fuchsia-500/25 hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none group"
           >
             <div className="flex items-center justify-center gap-3">
               {loading ? (
@@ -162,12 +164,12 @@ const AdminLogin = ({ onLogin }) => {
         </form>
 
         {/* Credentials Info */}
-        <div className="mt-8 p-5 bg-emerald-50/80 rounded-2xl border border-emerald-200/50">
+        <div className="mt-8 p-5 bg-purple-50/80 rounded-2xl border border-purple-200/60">
           <div className="flex items-center gap-2 mb-3">
-            <svg className="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p className="text-emerald-700 font-semibold text-sm">Demo Credentials</p>
+            <p className="text-purple-700 font-semibold text-sm">Demo Credentials</p>
           </div>
           <div className="space-y-1 text-sm">
             <p className="text-gray-700">
@@ -184,11 +186,12 @@ const AdminLogin = ({ onLogin }) => {
         {/* Security Badge */}
         <div className="mt-6 text-center">
           <div className="inline-flex items-center gap-2 text-xs text-gray-500">
-            <svg className="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
             Secure SSL Connection
           </div>
+        </div>
         </div>
       </div>
 
