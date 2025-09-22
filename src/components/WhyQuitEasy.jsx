@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 
-const WhyQuitEasy = ({ onShowForm }) => {
+const WhyQuitEasy = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeFeature, setActiveFeature] = useState(0);
   const sectionRef = useRef(null);
@@ -196,33 +196,7 @@ const WhyQuitEasy = ({ onShowForm }) => {
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-16 sm:mt-20 md:mt-24">
-          <div className="relative overflow-hidden rounded-3xl p-[1px] bg-gradient-to-br from-purple-200 to-purple-100 shadow-2xl">
-            <div className="relative rounded-3xl border border-white/60 bg-gradient-to-br from-purple-50 to-white p-8 sm:p-10 md:p-12 text-center">
-              <div className="absolute -top-10 -left-10 w-40 h-40 sm:w-56 sm:h-56 rounded-full bg-purple-100"></div>
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 sm:w-64 sm:h-64 rounded-full bg-purple-200"></div>
-              <div className="relative z-10">
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-900 to-purple-700">Ready to Get Started?</h3>
-                <p className="mt-4 text-purple-700/90 max-w-3xl mx-auto">You can find your local stop smoking service and get free support and advice to help you quit smoking for good.</p>
-                <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                  <button 
-                    onClick={onShowForm}
-                    className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl text-white font-bold text-lg sm:text-xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 bg-gradient-to-r from-purple-700 to-purple-600"
-                  >
-                    Find Local Service
-                  </button>
-                  <button 
-                    onClick={onShowForm}
-                    className="w-full sm:w-auto px-8 sm:px-10 md:px-12 py-4 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl transition-all duration-300 bg-white text-purple-700 ring-2 ring-purple-600 hover:bg-purple-600 hover:text-white shadow-lg hover:shadow-xl"
-                  >
-                    Get Free Support
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

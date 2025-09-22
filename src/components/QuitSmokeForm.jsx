@@ -144,14 +144,13 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
             {/* Email */}
             <div className="md:col-span-1">
               <label htmlFor="email" className="block text-sm font-semibold text-gray-700 uppercase tracking-wide mb-2">
-                Email *
+                Email
               </label>
               <input
                 id="email"
                 type="email"
                 value={formData.email}
                 onChange={(e) => handleInputChange('email', e.target.value)}
-                required
                 placeholder="Enter your email address"
                 autoComplete="email"
                 className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm"
@@ -161,14 +160,15 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
             {/* Phone */}
             <div className="md:col-span-1">
               <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 uppercase tracking-wide mb-2">
-                Phone Number
+                Phone Number *
               </label>
               <input
                 id="phone"
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => handleInputChange('phone', e.target.value)}
-                placeholder="Enter your phone number (optional)"
+                required
+                placeholder="Enter your phone number"
                 autoComplete="tel"
                 className="w-full px-5 py-4 border-2 border-gray-200 rounded-2xl text-gray-900 placeholder-gray-500 focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 focus:outline-none transition-all duration-300 bg-white/80 backdrop-blur-sm"
               />

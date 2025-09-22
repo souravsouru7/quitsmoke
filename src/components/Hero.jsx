@@ -27,7 +27,6 @@ const Hero = ({ onShowForm }) => {
         {/* Simple geometric background patterns */}
         <div className="absolute inset-0 hidden md:block">
           <div className="absolute top-0 left-0 w-full h-full">
-            <div className="absolute top-20 left-20 w-32 h-32 bg-purple-100 rotate-45 rounded-lg"></div>
             <div className="absolute top-40 right-32 w-24 h-24 bg-purple-200 rotate-12 rounded-full"></div>
             <div className="absolute bottom-32 left-1/4 w-40 h-40 bg-purple-50 -rotate-12 rounded-lg"></div>
             <div className="absolute bottom-20 right-20 w-28 h-28 bg-purple-300 rotate-45 rounded-full"></div>
@@ -112,15 +111,7 @@ const Hero = ({ onShowForm }) => {
           </button>
         </div>
 
-        {/* Scroll indicator - classic mobile design (smaller) */}
-        <div className="hidden sm:block absolute bottom-6 left-1/2 transform -translate-x-1/2 sm:bottom-8 md:bottom-10 z-30">
-          <div className="flex flex-col items-center text-purple-600">
-            <span className="text-sm sm:text-base mb-3 sm:mb-4 font-bold">Scroll Down</span>
-            <div className="w-6 h-10 sm:w-8 sm:h-12 border-2 border-purple-300 rounded-full flex justify-center">
-              <div className="w-2 h-4 sm:w-3 sm:h-5 bg-purple-500 rounded-full mt-2 animate-bounce"></div>
-            </div>
-          </div>
-        </div>
+        {/* Scroll indicator removed for cleaner UI */}
 
         {/* Decorative corner elements - mobile responsive (smaller) */}
         <div className="hidden sm:block absolute top-0 right-0 w-24 h-24 sm:w-36 sm:h-36 md:w-48 md:h-48 bg-purple-100 rounded-full -translate-y-12 translate-x-12 sm:-translate-y-20 sm:translate-x-20 md:-translate-y-24 md:translate-x-24"></div>

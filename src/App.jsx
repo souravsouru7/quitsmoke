@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import SmokeEffects from './components/SmokeEffects';
 import HowItWorks from './components/HowItWorks';
 import WhyQuitEasy from './components/WhyQuitEasy';
+import OwnerProfile from './components/OwnerProfile';
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
 import QuitSmokeForm from './components/QuitSmokeForm';
@@ -99,6 +100,7 @@ function App() {
             <HowItWorks onShowForm={() => setShowForm(true)} />
             <SmokeEffects onShowForm={() => setShowForm(true)} />
             <WhyQuitEasy onShowForm={() => setShowForm(true)} />
+            <OwnerProfile onShowForm={() => setShowForm(true)} />
             <QuitSmokeForm isOpen={showForm} onClose={handleCloseForm} />
             <InstallPrompt />
           </>
