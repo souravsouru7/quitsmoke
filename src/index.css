@@ -3,6 +3,27 @@
 @tailwind utilities;
 
 /* Dynamic typewriter animations - slower speed */
+/* Global: prevent horizontal scroll and clamp media */
+html, body, #root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Avoid long words or URLs causing overflow */
+body {
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
 @keyframes typewriter-dynamic {
   0% {
     width: 0;

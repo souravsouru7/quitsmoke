@@ -384,6 +384,7 @@
 /* Visual Section */
 .visual-section {
   position: relative;
+  overflow: hidden;
 }
 
 .main-visual {
