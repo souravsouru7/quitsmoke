@@ -42,10 +42,13 @@ const SmokeEffects = () => {
   }, []);
 
   useEffect(() => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
     if (isPaused) return;
     intervalRef.current = setInterval(() => {
       setActive((prev) => (prev + 1) % items.length);
-    }, 2500);
+    }, 2000);
     return () => intervalRef.current && clearInterval(intervalRef.current);
   }, [isPaused, items.length]);
 
@@ -90,23 +93,25 @@ const SmokeEffects = () => {
 
         <div
           className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={(e) => { touchStartXRef.current = e.touches[0].clientX; setIsPaused(true); }}
-          onTouchEnd={(e) => {
-            const endX = e.changedTouches[0].clientX;
-            const startX = touchStartXRef.current;
-            if (startX != null) {
-              const dx = endX - startX;
-              if (Math.abs(dx) > 40) {
-                setActive((prev) => (dx < 0 ? (prev + 1) % items.length : (prev - 1 + items.length) % items.length));
-              }
-            }
-            setIsPaused(false);
-          }}
         >
           {/* Radial Orbit */}
-          <div className="flex items-center justify-center">
+          <div
+            className="flex items-center justify-center"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={(e) => { touchStartXRef.current = e.touches[0].clientX; setIsPaused(true); }}
+            onTouchEnd={(e) => {
+              const endX = e.changedTouches[0].clientX;
+              const startX = touchStartXRef.current;
+              if (startX != null) {
+                const dx = endX - startX;
+                if (Math.abs(dx) > 40) {
+                  setActive((prev) => (dx < 0 ? (prev + 1) % items.length : (prev - 1 + items.length) % items.length));
+                }
+              }
+              setIsPaused(false);
+            }}
+          >
             <div
               className="relative"
               style={{ width: containerSize, height: containerSize }}

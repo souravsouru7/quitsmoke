@@ -2,7 +2,7 @@ import React from 'react';
 
 const OwnerProfile = ({ onShowForm }) => {
   return (
-    <section className="relative py-20 sm:py-28 md:py-32 bg-gradient-to-b from-white to-purple-50/30">
+    <section id="owner-profile" className="relative py-20 sm:py-28 md:py-32 bg-gradient-to-b from-white to-purple-50/30">
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 bg-purple-100 rounded-full translate-x-16 -translate-y-16 blur-sm"></div>
         <div className="absolute bottom-0 left-0 w-52 h-52 sm:w-72 sm:h-72 md:w-96 md:h-96 bg-purple-200 rounded-full -translate-x-24 translate-y-24 blur-sm"></div>
@@ -89,7 +89,21 @@ const OwnerProfile = ({ onShowForm }) => {
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-purple-800">
-          <a href="mailto:allamsaidivya@gmail.com" className="underline underline-offset-2 hover:text-purple-900 break-words">allamsaidivya@gmail.com</a>
+          <a href="mailto:Info.quiteasy@gmail.com" className="underline underline-offset-2 hover:text-purple-900 break-words">Info.quiteasy@gmail.com</a>
+          <span className="hidden sm:inline-block text-purple-300">|</span>
+          <a
+            href="https://www.instagram.com/quit_easy_?igsh=eHRhcGdiMWhza3Q0&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="inline-flex items-center text-purple-800 hover:text-purple-900"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757-2.243-5-5-5H7zm0 2h10c1.654 0 3 1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm11 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+              {/* Instagram glyph */}
+            </svg>
+            <span className="sr-only">Instagram</span>
+          </a>
               <span className="hidden sm:inline-block text-purple-300">|</span>
               <span>CO monitoring • NRT • Vapes • Referral pathways</span>
             </div>

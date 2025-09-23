@@ -69,7 +69,15 @@ const Hero = ({ onShowForm }) => {
                   >
                     Start Your Journey
                   </button>
-                  <button className="w-full sm:w-auto px-7 sm:px-12 md:px-14 py-4 sm:py-5 md:py-6 border-2 border-purple-600 text-purple-700 bg-white/60 font-bold text-lg sm:text-xl md:text-2xl rounded-2xl hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-xl hover:shadow-2xl focus:outline-none focus-visible:ring-4 focus-visible:ring-purple-300/60">
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById('owner-profile');
+                      if (el) {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }}
+                    className="w-full sm:w-auto px-7 sm:px-12 md:px-14 py-4 sm:py-5 md:py-6 border-2 border-purple-600 text-purple-700 bg-white/60 font-bold text-lg sm:text-xl md:text-2xl rounded-2xl hover:bg-purple-600 hover:text-white transition-all duration-300 shadow-xl hover:shadow-2xl focus:outline-none focus-visible:ring-4 focus-visible:ring-purple-300/60"
+                  >
                     Learn More
                   </button>
                 </div>
