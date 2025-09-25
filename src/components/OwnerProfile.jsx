@@ -23,9 +23,11 @@ const OwnerProfile = ({ onShowForm }) => {
             <div className="absolute -top-14 -right-14 w-40 h-40 rounded-full bg-purple-50" aria-hidden></div>
             <div className="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6">
               <div className="flex-shrink-0">
-                <div className="w-18 h-18 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-purple-600 to-fuchsia-600 text-white flex items-center justify-center text-3xl shadow-md ring-4 ring-purple-100">
-                  🫁
-                </div>
+                <img
+                  src="/owner.jpg"
+                  alt="Owner profile"
+                  className="w-18 h-18 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-md ring-4 ring-purple-100"
+                />
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
@@ -39,7 +41,7 @@ const OwnerProfile = ({ onShowForm }) => {
                   Helping people quit smoking with proven behavioural support and practical tools.
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {['MSc Global Public Health & Policy', 'NCSCT Practitioner', 'GDPR Compliant'].map((b) => (
+                  {['MSc Global Public Health & Policy', 'Stop Smoking Advisor', 'Public Health Practitioner'].map((b) => (
                     <span key={b} className="inline-flex items-center gap-2 rounded-full bg-white text-purple-800 ring-1 ring-purple-200 px-3 py-1 text-sm font-semibold break-words">
                       {b}
                     </span>
@@ -59,7 +61,7 @@ const OwnerProfile = ({ onShowForm }) => {
                 href="tel:07436859065"
                 className="w-full px-6 py-4 min-h-[48px] text-center border-2 border-purple-600 text-purple-700 bg-white font-bold rounded-2xl hover:bg-purple-600 hover:text-white transition-all shadow-xl"
               >
-                Call 07436 859 065
+                Call +44 7840 010020
               </a>
             </div>
 
@@ -82,7 +84,7 @@ const OwnerProfile = ({ onShowForm }) => {
           <h4 className="text-base sm:text-lg font-extrabold text-purple-900">How I help you quit</h4>
           <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-purple-800 text-sm">
             <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Personal quit plan matched to your routine</span></li>
-            <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Weekly check‑ins and CO monitoring</span></li>
+            <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Weekly Virtual Follow-ups</span></li>
             <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Guidance on NRT, vapes, and triggers</span></li>
             <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Support for stress, sleep and cravings</span></li>
           </ul>
@@ -105,7 +107,7 @@ const OwnerProfile = ({ onShowForm }) => {
             <span className="sr-only">Instagram</span>
           </a>
               <span className="hidden sm:inline-block text-purple-300">|</span>
-              <span>CO monitoring • NRT • Vapes • Referral pathways</span>
+              <span> NRT • Vapes • Referral pathways</span>
             </div>
           </div>
         </div>

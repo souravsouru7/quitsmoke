@@ -11,8 +11,90 @@ const Hero = ({ onShowForm }) => {
 
   return (
     <>
+      {/* Mobile-only redesigned hero */}
       <section
-        className={`relative min-h-screen overflow-hidden ${
+        className={`md:hidden relative min-h-screen overflow-hidden ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+        } transition-all duration-700 pb-14`}
+        style={{
+          backgroundImage: "url('/bk.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/85 to-white/75 backdrop-blur-md"></div>
+        {/* Modern layered radial gradients */}
+        <div className="pointer-events-none absolute inset-0 opacity-70 mix-blend-multiply bg-[radial-gradient(120%_80%_at_50%_0%,#f5d0fe_0%,transparent_60%),radial-gradient(120%_80%_at_50%_100%,#ddd6fe_0%,transparent_60%)]"></div>
+
+        {/* Top bar */}
+        <header className="relative z-20 flex items-center justify-start px-5 pt-0">
+          <img src="/logo.png" alt="Quit Easy" className="h-32 w-auto drop-shadow-2xl" loading="eager" decoding="async" />
+        </header>
+
+        {/* Main section - modern split with glass grid and marquee */}
+        <main className="relative z-10 px-5 mt-2">
+          <div className="text-left">
+            <h1 className="text-[34px] font-extrabold leading-[1.1]">
+              <div className="bg-gradient-to-br from-purple-900 via-purple-700 to-fuchsia-700 bg-clip-text text-transparent">SMALL STEP</div>
+              <div className="bg-gradient-to-br from-fuchsia-700 to-purple-800 bg-clip-text text-transparent">BIG CHANGE</div>
+            </h1>
+            <p className="mt-2 text-sm text-purple-900/90">
+              Transform your life with our simple, supportive, and proven approach
+            </p>
+          </div>
+
+          {/* Glass feature grid */}
+          <div className="mt-4 grid grid-cols-3 gap-3">
+            <div className="rounded-2xl bg-white/70 backdrop-blur ring-1 ring-purple-100 shadow p-3 text-center">
+              <div className="text-xl">🧠</div>
+              <p className="mt-1 text-[11px] font-semibold text-purple-900">Mindful</p>
+            </div>
+            <div className="rounded-2xl bg-white/70 backdrop-blur ring-1 ring-purple-100 shadow p-3 text-center">
+              <div className="text-xl">⏱️</div>
+              <p className="mt-1 text-[11px] font-semibold text-purple-900">2‑min</p>
+            </div>
+            <div className="rounded-2xl bg-white/70 backdrop-blur ring-1 ring-purple-100 shadow p-3 text-center">
+              <div className="text-xl">💸</div>
+              <p className="mt-1 text-[11px] font-semibold text-purple-900">Save</p>
+            </div>
+          </div>
+
+          {/* Marquee benefits */}
+          <div className="mt-3 overflow-hidden rounded-full ring-1 ring-purple-200 bg-white/70 backdrop-blur">
+            <div className="flex gap-6 py-2 animate-[marquee_18s_linear_infinite] [--gap:24px] whitespace-nowrap">
+              <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">Fast Results</span>
+              <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">Proven Method</span>
+              <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">24/7 Support</span>
+              <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">Smoke‑Free Plan</span>
+              <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">Stress Coaching</span>
+              {/* duplicate set for seamless loop */}
+              <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">Fast Results</span>
+              <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">Proven Method</span>
+              <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">24/7 Support</span>
+              <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">Smoke‑Free Plan</span>
+              <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">Stress Coaching</span>
+            </div>
+          </div>
+        </main>
+
+        {/* Floating pill CTA */}
+        <div className="md:hidden fixed bottom-10 left-0 right-0 z-30 flex justify-center px-6">
+          <button
+            onClick={onShowForm}
+            className="w-full max-w-sm px-6 py-4 rounded-full bg-gradient-to-r from-purple-700 to-fuchsia-600 text-white font-extrabold shadow-2xl active:scale-[0.99]"
+          >
+            Start Your Journey
+          </button>
+        </div>
+
+        {/* Bottom spacer for safe area */}
+        <div className="h-2"></div>
+      </section>
+
+      {/* Desktop/tablet original hero preserved */}
+      <section
+        className={`hidden md:block relative min-h-screen overflow-hidden ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
         } transition-all duration-700`}
         style={{
