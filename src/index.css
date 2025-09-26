@@ -8,6 +8,7 @@ html, body, #root {
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -23,6 +24,27 @@ img, video, canvas, svg {
 body {
   word-wrap: break-word;
   overflow-wrap: anywhere;
+}
+
+/* Reduce heavy backdrops on mobile for smoother scroll */
+@media (max-width: 768px) {
+  .backdrop-blur-md { backdrop-filter: none; }
+  .backdrop-blur { backdrop-filter: none; }
+}
+
+/* GPU-accelerate transforms/opacity for smoother animations */
+.will-change-transform { will-change: transform, opacity; }
+
+/* Efficient marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 18s linear infinite;
 }
 @keyframes typewriter-dynamic {
   0% {

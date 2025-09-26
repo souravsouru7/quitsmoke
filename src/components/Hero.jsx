@@ -23,7 +23,7 @@ const Hero = ({ onShowForm }) => {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/85 to-white/75 backdrop-blur-md"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/85 to-white/75"></div>
         {/* Modern layered radial gradients */}
         <div className="pointer-events-none absolute inset-0 opacity-70 mix-blend-multiply bg-[radial-gradient(120%_80%_at_50%_0%,#f5d0fe_0%,transparent_60%),radial-gradient(120%_80%_at_50%_100%,#ddd6fe_0%,transparent_60%)]"></div>
 
@@ -61,8 +61,8 @@ const Hero = ({ onShowForm }) => {
           </div>
 
           {/* Marquee benefits */}
-          <div className="mt-3 overflow-hidden rounded-full ring-1 ring-purple-200 bg-white/70 backdrop-blur">
-            <div className="flex gap-6 py-2 animate-[marquee_18s_linear_infinite] [--gap:24px] whitespace-nowrap">
+          <div className="mt-3 overflow-hidden rounded-full ring-1 ring-purple-200 bg-white/70">
+            <div className="marquee-track gap-6 py-2 will-change-transform">
               <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">Fast Results</span>
               <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">Proven Method</span>
               <span className="px-3 py-1 rounded-full bg-purple-50 text-purple-800 text-xs font-semibold">24/7 Support</span>
