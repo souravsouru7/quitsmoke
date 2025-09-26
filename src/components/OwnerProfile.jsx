@@ -91,7 +91,7 @@ const OwnerProfile = ({ onShowForm }) => {
         </div>
 
         <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-purple-800">
-          <a href="mailto:Info.quiteasy@gmail.com" className="underline underline-offset-2 hover:text-purple-900 break-words">Info.quiteasy@gmail.com</a>
+          <a href="mailto:info@quiteasy.in" className="underline underline-offset-2 hover:text-purple-900 break-words">info@quiteasy.in</a>
           <span className="hidden sm:inline-block text-purple-300">|</span>
           <a
             href="https://www.instagram.com/quit_easy_?igsh=eHRhcGdiMWhza3Q0&utm_source=qr"

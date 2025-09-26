@@ -30,15 +30,16 @@ function App() {
 
     const timeoutId = setTimeout(() => setMinDelayDone(true), 1000);
 
-    // Register service worker for PWA functionality
+    // Disable and unregister any existing service workers to prevent stale caches/white screen
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js')
-        .then((registration) => {
-          console.log('SW registered: ', registration);
+      navigator.serviceWorker.getRegistrations()
+        .then((registrations) => {
+          registrations.forEach((registration) => registration.unregister());
         })
-        .catch((registrationError) => {
-          console.log('SW registration failed: ', registrationError);
-        });
+        .catch(() => {});
+      if (window.caches) {
+        caches.keys().then((keys) => keys.forEach((k) => caches.delete(k))).catch(() => {});
+      }
     }
 
     return () => {
