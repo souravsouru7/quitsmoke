@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { apiFetch } from '../api/config';
 
 const AdminDashboard = ({ onLogout }) => {
   const [forms, setForms] = useState([]);
@@ -34,7 +35,7 @@ const AdminDashboard = ({ onLogout }) => {
 
   const fetchForms = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/admin/forms', {
+      const response = await apiFetch('/api/admin/forms', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +65,7 @@ const AdminDashboard = ({ onLogout }) => {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/form/${formId}`, {
+      const response = await apiFetch(`/api/admin/form/${formId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -153,47 +154,7 @@ const AdminDashboard = ({ onLogout }) => {
   const yesNoOptions = ['Yes', 'No'];
   const hardestToQuitOptions = ['Morning', 'Any of the others'];
 
-  const scoreMappings = {
-    timeToFirstSmoke: {
-      'within 5 minutes': 3,
-      '6 - 30 minutes': 2,
-      '31 - 60 minutes': 1,
-      'over 60 minutes': 0
-    },
-    dailyAmount: {
-      'Up to 10': 0,
-      '11 - 20': 1,
-      '21 - 30': 2,
-      '31+': 3
-    },
-    difficultWhereForbidden: {
-      Yes: 1,
-      No: 0
-    },
-    hardestToQuit: {
-      Morning: 1,
-      'Any of the others': 0
-    },
-    smokeMoreMorning: {
-      Yes: 1,
-      No: 0
-    },
-    smokeWhenIll: {
-      Yes: 1,
-      No: 0
-    }
-  };
-
-  const computeFagerstromScore = () => {
-    let total = 0;
-    total += scoreMappings.timeToFirstSmoke[smokingHistory.timeToFirstSmoke] || 0;
-    total += scoreMappings.dailyAmount[smokingHistory.dailyAmount] || 0;
-    total += scoreMappings.difficultWhereForbidden[smokingHistory.difficultWhereForbidden] || 0;
-    total += scoreMappings.hardestToQuit[smokingHistory.hardestToQuit] || 0;
-    total += scoreMappings.smokeMoreMorning[smokingHistory.smokeMoreMorning] || 0;
-    total += scoreMappings.smokeWhenIll[smokingHistory.smokeWhenIll] || 0;
-    setFagerstromScore(total);
-  };
+  
 
   const loadFormData = () => {
     if (!selectedForm) return;
@@ -260,7 +221,7 @@ const AdminDashboard = ({ onLogout }) => {
         aboutYou: aboutYou
       };
 
-      const response = await fetch(`http://localhost:5000/api/admin/form/${selectedForm._id}`, {
+      const response = await apiFetch(`/api/admin/form/${selectedForm._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -739,10 +700,7 @@ const AdminDashboard = ({ onLogout }) => {
                           {yesNoOptions.map((o) => <option key={o} value={o}>{o}</option>)}
                         </select>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <button onClick={computeFagerstromScore} className="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-semibold">Score Dependence</button>
-                        <div className="text-sm text-slate-700">Total Score <span className="font-bold text-blue-700">{fagerstromScore}</span></div>
-                      </div>
+                      
                     </div>
                   </div>
 

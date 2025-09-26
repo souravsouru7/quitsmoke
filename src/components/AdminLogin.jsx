@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { apiFetch } from '../api/config';
 
 const AdminLogin = ({ onLogin }) => {
   const [credentials, setCredentials] = useState({
@@ -14,7 +15,7 @@ const AdminLogin = ({ onLogin }) => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/admin/login', {
+      const response = await apiFetch('/api/admin/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -164,24 +165,7 @@ const AdminLogin = ({ onLogin }) => {
         </form>
 
         {/* Credentials Info */}
-        <div className="mt-8 p-5 bg-purple-50/80 rounded-2xl border border-purple-200/60">
-          <div className="flex items-center gap-2 mb-3">
-            <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <p className="text-purple-700 font-semibold text-sm">Demo Credentials</p>
-          </div>
-          <div className="space-y-1 text-sm">
-            <p className="text-gray-700">
-              <span className="text-gray-600">Email:</span> 
-              <span className="text-gray-800 ml-2 font-mono">admin@quitsmoke.com</span>
-            </p>
-            <p className="text-gray-700">
-              <span className="text-gray-600">Password:</span> 
-              <span className="text-gray-800 ml-2 font-mono">admin123</span>
-            </p>
-          </div>
-        </div>
+        
 
         {/* Security Badge */}
         <div className="mt-6 text-center">

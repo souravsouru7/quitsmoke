@@ -28,7 +28,7 @@ function App() {
       window.addEventListener('load', onWindowLoad);
     }
 
-    const timeoutId = setTimeout(() => setMinDelayDone(true), 3000);
+    const timeoutId = setTimeout(() => setMinDelayDone(true), 1000);
 
     // Register service worker for PWA functionality
     if ('serviceWorker' in navigator) {
