@@ -24,9 +24,9 @@ const OwnerProfile = ({ onShowForm }) => {
             <div className="relative z-10 flex flex-col sm:flex-row sm:items-center gap-6">
               <div className="flex-shrink-0">
                 <img
-                  src="/owner.jpg"
+                  src="/newowner.jpg"
                   alt="Owner profile"
-                  className="w-18 h-18 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-md ring-4 ring-purple-100"
+                  className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl object-cover shadow-md ring-4 ring-purple-100"
                 />
               </div>
               <div className="flex-1 min-w-0">
