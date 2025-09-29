@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { apiFetch } from '../api/config';
 
 const QuitSmokeForm = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState({
@@ -24,7 +25,7 @@ const QuitSmokeForm = ({ isOpen, onClose }) => {
     setLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/form/submit', {
+      const response = await apiFetch('/api/form/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
