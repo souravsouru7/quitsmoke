@@ -34,26 +34,26 @@ const WhyQuitEasy = () => {
     {
       icon: "🏥",
       title: "Stop Smoking Services",
-      description: "Stop smoking services will give you free support and advice. You can speak to them to find out how they can help.",
+      description: "Access free stop smoking services offering personalised support and expert advice.",
     
     },
     {
       icon: "💊",
       title: "Stop Smoking Aids",
-      description: "E-cigarettes (vapes), nicotine gum, nicotine patches, and stop smoking tablets can help you not smoke when you feel you really want to.",
-      highlight: "Multiple options available"
+      description: "Use safe and effective nicotine replacement products to manage cravings and reduce dependence. With the right support, quitting becomes easier and more successful.",
+      highlight: "Smart options for a healthier journey"
     },
     {
       icon: "📱",
       title: "Digital Support",
-      description: "Use the free Quiteasy app, get daily text support, and access videos and information online.",
-      highlight: "24/7 digital help"
+      description: "Stay connected anytime with the free QwitEasy app. Access daily motivational messages, simple strategies, educational videos, and trusted information to keep you on track.",
+      highlight: "24/7 guidance at your fingertips"
     },
     {
       icon: "💡",
       title: "Practical Tips",
-      description: "Make a list of reasons why you want to quit, stay away from things that make you want to smoke, and throw away any cigarettes you have.",
-      highlight: "Simple but effective"
+      description: "Follow clear, everyday steps to stay smoke-free. Focus on your reasons for quitting, build healthy habits, and use proven techniques to handle cravings and triggers.",
+      highlight: "Simple actions, lasting results"
     }
   ];
 
