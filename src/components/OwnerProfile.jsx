@@ -85,7 +85,7 @@ const OwnerProfile = ({ onShowForm }) => {
           <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-purple-800 text-sm">
             <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Personalized quit plan tailored to your lifestyle and schedule</span></li>
             <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Weekly Virtual Follow-ups</span></li>
-            <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Guidance on NRT,and triggers</span></li>
+            <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Expert guidance on NRT options and trigger management</span></li>
             <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Support for stress, sleep and cravings</span></li>
           </ul>
         </div>
