@@ -83,9 +83,9 @@ const OwnerProfile = ({ onShowForm }) => {
         <div className="mt-6 rounded-2xl border border-purple-200 bg-white p-5">
           <h4 className="text-base sm:text-lg font-extrabold text-purple-900">How I help you quit</h4>
           <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-purple-800 text-sm">
-            <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Personal quit plan matched to your routine</span></li>
+            <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Personalized quit plan tailored to your lifestyle and schedule</span></li>
             <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Weekly Virtual Follow-ups</span></li>
-            <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Guidance on NRT, vapes, and triggers</span></li>
+            <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Guidance on NRT,and triggers</span></li>
             <li className="flex items-start gap-2"><span className="mt-0.5 text-green-600">✓</span><span>Support for stress, sleep and cravings</span></li>
           </ul>
         </div>
