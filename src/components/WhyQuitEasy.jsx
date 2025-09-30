@@ -46,7 +46,7 @@ const WhyQuitEasy = () => {
     {
       icon: "📱",
       title: "Digital Support",
-      description: "Stay connected anytime with the free QwitEasy app. Access daily motivational messages, simple strategies, educational videos, and trusted information to keep you on track.",
+      description: "Stay connected anytime with the free QuitEasy app. Access daily motivational messages, simple strategies, educational videos, and trusted information to keep you on track.",
       highlight: "24/7 guidance at your fingertips"
     },
     {
